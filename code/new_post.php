@@ -104,7 +104,6 @@
         var inputyyyy = partdate[0];
         var inputmm = partdate[1];
         var inputdd = partdate[2];
-        alert("mamam");
         if (nowyyyy<inputyyyy)
         {
             return true;
