@@ -43,6 +43,7 @@
     <a style="border:none;" id="logo" href="index.php"><h1>Simple<span>-</span>Blog</h1></a>
     <ul class="nav-primary">
         <li><a href="new_post.php">+ Tambah Post</a></li>
+	<li><a href="#">+ Login</a></li>
     </ul>
 </nav>
 
