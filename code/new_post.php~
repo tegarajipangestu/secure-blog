@@ -58,7 +58,7 @@
                     <input type="text" name="Judul" id="Judul">
 
                     <label for="Tanggal">Tanggal:</label>
-                    <input type="date" name="Tanggal" id="Tanggal">
+                    <input type="text" name="Tanggal" id="Tanggal">
                     
                     <label for="Konten">Konten:</label><br>
                     <textarea name="Konten" rows="20" cols="20" id="Konten"></textarea>
@@ -104,7 +104,6 @@
         var inputyyyy = partdate[0];
         var inputmm = partdate[1];
         var inputdd = partdate[2];
-        alert("mamam");
         if (nowyyyy<inputyyyy)
         {
             return true;
