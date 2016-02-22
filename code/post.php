@@ -2,7 +2,7 @@
 <?php 
     include 'mainviewer.php';
     $con = phpsqlconnection();
-    $postid = $_GET['postid'];
+    $postid = htmlspecialchars($_GET['postid'], ENT_QUOTES, 'UTF-8');
     $getpostresult = getspecificpost($con,$postid);
     $row = mysqli_fetch_array($getpostresult);
     $getcommentsresult = getspecificcomments($con,$postid);
@@ -39,7 +39,7 @@
 
 <?php 
     echo 
-        "<title>Simple Blog | ".$row['Title']."</title>";
+        "<title>Simple Blog | ".htmlspecialchars($row['Title'], ENT_QUOTES, 'UTF-8')."</title>";
  ?>
 
 
@@ -60,12 +60,12 @@
     <header class="art-header">
         <div class="art-header-inner" style="margin-top: 0px; opacity: 1;">
             <?php 
-              $time = strtotime($row['Date']);
+              $time = strtotime(htmlspecialchars($row['Date'], ENT_QUOTES, 'UTF-8'));
               $time = date('j F Y',$time);
               echo "<time class=\"art-time\">".$time."</time>";
              ?>
              <?php 
-              echo "<h2 class=\"art-title\">".$row['Title']."</h2>";
+              echo "<h2 class=\"art-title\">".htmlspecialchars($row['Title'], ENT_QUOTES, 'UTF-8')."</h2>";
               ?>
             <p class="art-subtitle"></p>
         </div>
@@ -75,7 +75,7 @@
         <div class="art-body-inner">
             <hr class="featured-article" />
             <?php 
-                echo "<p>".$row['Contents']."</p>";
+                echo "<p>".htmlspecialchars($row['Contents'], ENT_QUOTES, 'UTF-8')."</p>";
              ?>
             <hr />
             
@@ -105,13 +105,13 @@
                                 "<li class=\"art-list-item\">
                                 <div class=\"art-list-item-title-and-time\">";
                                 echo
-                                "<h2 class=\"art-list-title\"><a href=\"post.php\">".$comments['Title']."</a></h2>";
-                                $time = strtotime($comments['Time']);
+                                "<h2 class=\"art-list-title\"><a href=\"post.php\">".htmlspecialchars($comments['Title'], ENT_QUOTES, 'UTF-8')."</a></h2>";
+                                $time = strtotime(htmlspecialchars($comments['Time'], ENT_QUOTES, 'UTF-8'));
                                 $time = date('j F Y',$time);
                                 echo 
                                 "<div class=\"art-list-time\">".$time."</div> </div>";
                                 echo
-                                "<p>".$comments['Contents']."</p>";                                
+                                "<p>".htmlspecialchars($comments['Contents'], ENT_QUOTES, 'UTF-8')."</p>";                                
                                 echo "</li>";
                             }
                          ?>
@@ -145,16 +145,6 @@
 <script type="text/javascript" src="assets/js/fittext.js"></script>
 <script type="text/javascript" src="assets/js/app.js"></script>
 <script type="text/javascript" src="assets/js/respond.min.js"></script>
-<script>
-  var ga_ua = '{{! TODO: ADD GOOGLE ANALYTICS UA HERE }}';
-
-  (function(g,h,o,s,t,z){g.GoogleAnalyticsObject=s;g[s]||(g[s]=
-      function(){(g[s].q=g[s].q||[]).push(arguments)});g[s].s=+new Date;
-      t=h.createElement(o);z=h.getElementsByTagName(o)[0];
-      t.src='//www.google-analytics.com/analytics.js';
-      z.parentNode.insertBefore(t,z)}(window,document,'script','ga'));
-      ga('create',ga_ua);ga('send','pageview');
-</script>
 <script>
 function showcomments(postid, title, email, contents) 
 {

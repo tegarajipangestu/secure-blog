@@ -38,9 +38,9 @@
 <div class="wrapper">
 
 <nav class="nav">
-    <a style="border:none;" id="logo" href="index.php"><h1>Simple<span>-</span>Blog</h1></a>
+    <a style="border:none;" id="logo" href="index.html"><h1>Simple<span>-</span>Blog</h1></a>
     <ul class="nav-primary">
-        <li><a href="new_post.php">+ Tambah Post</a></li>
+        <li><a href="new_post.html">+ Tambah Post</a></li>
     </ul>
 </nav>
 
@@ -52,8 +52,9 @@
     <div class="art-body">
         <div class="art-body-inner">
             <h2>Tambah Post</h2>
+
             <div id="contact-area">
-                 <form name="PostForm" method="post" onSubmit="return validateDate()" action="new_post_action.php">
+                <form method="post" action="#">
                     <label for="Judul">Judul:</label>
                     <input type="text" name="Judul" id="Judul">
 
@@ -92,58 +93,11 @@
 
 </div>
 
-<script>
-    function validateDate()
-    {
-        var inputdate = document.forms["PostForm"]["Tanggal"].value;
-        var currentdate = new Date();
-        var nowdd = currentdate.getDate();
-        var nowmm = currentdate.getMonth()+1;
-        var nowyyyy = currentdate.getFullYear();
-        var partdate = inputdate.split('-');
-        var inputyyyy = partdate[0];
-        var inputmm = partdate[1];
-        var inputdd = partdate[2];
-        if (nowyyyy<inputyyyy)
-        {
-            return true;
-        }        
-        else if (nowyyyy>inputyyyy)
-        {
-            alert("Tanggal tidak valid");
-            return false;
-        }
-        else
-        {
-            if (nowmm<inputmm)
-            {
-                return true;
-            }
-            else if (nowmm>inputmm)
-            {
-                alert("Tanggal tidak valid");
-                return false;
-            }
-            else
-            {
-                if (nowdd<=inputdd)
-                {
-                    return true;
-                }
-                else  if (nowdd>inputdd)
-                {
-                    alert("Tanggal tidak valid");
-                    return false;
-                }
-            }
-        }
-    }  
-</script>
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
 <script type="text/javascript" src="assets/js/fittext.js"></script>
 <script type="text/javascript" src="assets/js/app.js"></script>
 <script type="text/javascript" src="assets/js/respond.min.js"></script>
-<script type="text/javascript" src="assets/js/newpost.js"></script>
-<script>
+<script type="text/javascript">
   var ga_ua = '{{! TODO: ADD GOOGLE ANALYTICS UA HERE }}';
 
   (function(g,h,o,s,t,z){g.GoogleAnalyticsObject=s;g[s]||(g[s]=
@@ -153,5 +107,6 @@
       z.parentNode.insertBefore(t,z)}(window,document,'script','ga'));
       ga('create',ga_ua);ga('send','pageview');
 </script>
+
 </body>
 </html>
