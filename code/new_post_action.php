@@ -4,7 +4,13 @@
 	$Tanggal = $_POST['Tanggal'];
 	$Konten = $_POST['Konten'];
 	$con = phpsqlconnection();
-	mysqli_query($con,"INSERT INTO post (Title, Date, Contents)	VALUES ('".$Judul."'".","."'".$Tanggal."'".","."'".$Konten."')");
-	header("Location: index.php");
+	$sql = "INSERT INTO post (Post_Id, Creator_Id, Title, Date, Contents) 
+		VALUES (NULL".",3,"."'".$Judul."'".","."'".$Tanggal."'".","."'".$Konten."')";
+	if (mysqli_multi_query($con, $sql)) {
+    	header("Location: index.php");
+	} else {
+	    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+	}
+	//
 	die();
  ?>

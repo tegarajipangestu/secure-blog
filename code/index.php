@@ -1,8 +1,11 @@
+<?php 
+  session_start();
+  if (isset($_SESSION["isLogin"])){
+    include 'mainviewer.php';
+ ?>
+
 <!DOCTYPE html>
 <html>
-<?php 
-  include 'mainviewer.php';
- ?>
 <head>
 
 <meta charset="utf-8">
@@ -43,7 +46,8 @@
     <a style="border:none;" id="logo" href="index.php"><h1>Simple<span>-</span>Blog</h1></a>
     <ul class="nav-primary">
         <li><a href="new_post.php">+ Tambah Post</a></li>
-	<li><a href="#">+ Login</a></li>
+
+	<li><a href="logout.php" ="">Logout</a></li>
     </ul>
 </nav>
 
@@ -89,3 +93,9 @@
 </script>
 </body>
 </html>
+<?php 
+    }else{
+        header("Location: login.php"); /* Redirect browser */
+        exit();
+    }
+ ?>
