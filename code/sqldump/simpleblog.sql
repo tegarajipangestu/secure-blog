@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 172.17.0.3:3306
--- Generation Time: Feb 23, 2016 at 05:34 AM
+-- Generation Time: Feb 23, 2016 at 08:42 AM
 -- Server version: 5.6.29-log
 -- PHP Version: 5.6.9-1+deb.sury.org~trusty+2
 
@@ -30,11 +30,17 @@ CREATE TABLE `comments` (
   `Comment_Id` int(11) NOT NULL,
   `Creator_Id` int(11) NOT NULL,
   `Post_Id` int(11) NOT NULL,
-  `Title` varchar(50) NOT NULL,
-  `Email` varchar(50) NOT NULL,
   `Contents` text NOT NULL,
   `Time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`Comment_Id`, `Creator_Id`, `Post_Id`, `Contents`, `Time`) VALUES
+(14, 3, 32, 'cdscsdc', '2016-02-23 08:38:35'),
+(15, 3, 32, 'cdscsdccsdcsdccdsc', '2016-02-23 08:38:38');
 
 -- --------------------------------------------------------
 
@@ -55,12 +61,7 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`Post_Id`, `Creator_Id`, `Title`, `Date`, `Contents`) VALUES
-(26, 3, 'dscsdcsdc', '2016-02-24 00:00:00', 'asdcsadcascsdaccdsac'),
-(27, 3, 'dcscsdc', '2016-02-24 00:00:00', 'cdddd'),
-(28, 3, 'dcscsdc', '2016-02-24 00:00:00', 'cdddd'),
-(29, 3, 'xsdcsdcsdc', '2016-02-24 00:00:00', 'cdscsaccdac'),
-(30, 3, 'daniar', '2016-02-24 00:00:00', 'cdsacdascd'),
-(31, 3, 'dcscsdcsdcdddddddddd', '2016-02-26 00:00:00', 'cdscscsc');
+(32, 3, 'cdscsdcsdc', '2016-02-23 00:00:00', 'Bujangga Manik mangrupa salah sahiji naskah dina basa Sunda anu pohara gedé ajénna. Naskah ieu ditulis dina wangun puisi naratif dina daun nipah anu kiwari disimpen di Pabukon Bodleian di Oxford saprak taun 1627 (MS Jav. b. 3 (R), cf. Noorduyn 1968:469, Ricklefs/Voorhoeve 1977:181). Ieu naskah diwangun ku 29 lambar daun nipah, anu unggal lambarna ngandung kira-kira 56 jajar (rumpaka) anu tiap rumpakana diwangun ku 8 padalisan, bentuk puisi Sunda buhun.\r\n\r\nAnu ngalalakon dina ieu naskah téh nyaéta Prabu Jaya Pakuan nu boga landihan Bujangga Manik, saurang resi Hindu anu, sanajan mangrupa saurang prabu di karaton Pakuan Pajajaran (puseur dayeuh Karajaan Sunda, anu perenahna di wewengkon anu ayeuna jadi dayeuh Bogor), leuwih resep ngalakonan hirup jadi resi. Salaku resi, manéhna ngumbara mapay kabuyutan atawa puseur kaagamaan (Hindu) nu aya di Jawa jeung Bali. Anjeunna nyaritakeun yén pangumbaraanana téh dipaju dua kali. Samulangna ti Jawa, Bujangga Manik tatapa di hiji gunung di Tanah Sunda (bale geusan ngajadina) nepi ka pupusna.');
 
 -- --------------------------------------------------------
 
@@ -69,7 +70,7 @@ INSERT INTO `post` (`Post_Id`, `Creator_Id`, `Title`, `Date`, `Contents`) VALUES
 --
 
 CREATE TABLE `user` (
-  `User_id` int(11) NOT NULL,
+  `User_Id` int(11) NOT NULL,
   `Nama` varchar(25) NOT NULL,
   `Email` varchar(25) NOT NULL,
   `Password` varchar(25) NOT NULL
@@ -79,9 +80,18 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`User_id`, `Nama`, `Email`, `Password`) VALUES
+INSERT INTO `user` (`User_Id`, `Nama`, `Email`, `Password`) VALUES
 (3, 'Daniar Heri Kurniawan', 'daniar.h.k@gmail.com', 'da'),
-(8, 'Tegar Aji Pangestu', 'tegar@gmail.com', 'te');
+(8, 'Tegar Aji Pangestu', 'tegar@gmail.com', 'te'),
+(9, 'Fandi Azam Wiranata', 'fandi@gmail.com', 'fa'),
+(10, 'Kurnia Mega', 'kurnia@gmail.com', 'ku'),
+(11, 'Subagyo', 'su@gmail.com', 'su'),
+(12, 'aa', 'aa@gmail.com', 'aa'),
+(13, 'bb', 'bb@gmail.com', 'bb'),
+(14, 'rr', 'rr@gmail.com', 'rr'),
+(15, 'ww', 'ww@gmail.com', 'ww'),
+(16, 'tt', 'tt@gmail.com', 'tt'),
+(17, 'qq', 'qq@gmail.com', 'qq');
 
 --
 -- Indexes for dumped tables
@@ -107,8 +117,8 @@ ALTER TABLE `post`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`User_id`),
-  ADD KEY `id` (`User_id`);
+  ADD PRIMARY KEY (`User_Id`),
+  ADD KEY `id` (`User_Id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -118,17 +128,17 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `Comment_Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Comment_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `Post_Id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `Post_Id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `User_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `User_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- Constraints for dumped tables
 --
@@ -138,13 +148,13 @@ ALTER TABLE `user`
 --
 ALTER TABLE `comments`
   ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`Post_Id`) REFERENCES `post` (`Post_Id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`Creator_Id`) REFERENCES `user` (`User_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`Creator_Id`) REFERENCES `user` (`User_Id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `post`
 --
 ALTER TABLE `post`
-  ADD CONSTRAINT `pembuat_post` FOREIGN KEY (`Creator_Id`) REFERENCES `user` (`User_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `pembuat_post` FOREIGN KEY (`Creator_Id`) REFERENCES `user` (`User_Id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
