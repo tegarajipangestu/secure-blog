@@ -1,4 +1,6 @@
 <?php 
+session_start();
+if (isset($_SESSION["isLogin"])){
 	include 'mainviewer.php';
 	$Judul = $_POST['Judul'];
 	$Tanggal = $_POST['Tanggal'];
@@ -13,4 +15,8 @@
 	}
 	//
 	die();
+}else{
+    header("Location: login.php"); /* Redirect browser */
+}
+
  ?>

@@ -1,3 +1,8 @@
+<?php 
+  session_start();
+  if (isset($_SESSION["isLogin"])){
+ ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -134,3 +139,9 @@
 </script>
 </body>
 </html>
+<?php 
+    }else{
+        header("Location: login.php"); /* Redirect browser */
+        exit();
+    }
+ ?>

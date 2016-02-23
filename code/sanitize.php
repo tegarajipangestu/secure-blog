@@ -1,4 +1,7 @@
 <?
+
+session_start();
+if (isset($_SESSION["isLogin"])){
 /*
  * Copyright (c) 2002,2003 Free Software Foundation
  * developed under the custody of the
@@ -271,5 +274,8 @@ function check($input, $flags, $min='', $max='')
 
 // testing
 //include "test.php"
+}else{
+    header("Location: login.php"); /* Redirect browser */
+}
 
 ?>

@@ -1,3 +1,8 @@
+<?php 
+  session_start();
+  if (isset($_SESSION["isLogin"])){
+ ?>
+
 <!DOCTYPE html>
 <?php 
     include 'mainviewer.php';
@@ -84,14 +89,8 @@
             <div id="contact-area">
                 <?php 
                     echo 
-                    "<form name=\"AddComment\" method=\"post\"  onSubmit=\"return validateEmail() && showcomments(".$postid.",Nama.value,Email.value,Komentar.value)\">";
+                    "<form name=\"AddComment\" method=\"post\"  onSubmit=\"return showcomments(".$postid.",Komentar.value)\">";
                  ?> 
-                    <label for="Nama">Nama:</label>
-                    <input type="text" name="Nama" id="Nama">
-        
-                    <label for="Email">Email:</label>
-                    <input type="text" name="Email" id="Email">
-                    
                     <label for="Komentar">Komentar:</label><br>
                     <textarea name="Komentar" rows="20" cols="20" id="Komentar"></textarea>
 
@@ -104,8 +103,6 @@
                                 echo
                                 "<li class=\"art-list-item\">
                                 <div class=\"art-list-item-title-and-time\">";
-                                echo
-                                "<h2 class=\"art-list-title\"><a href=\"post.php\">".htmlspecialchars($comments['Title'], ENT_QUOTES, 'UTF-8')."</a></h2>";
                                 $time = strtotime(htmlspecialchars($comments['Time'], ENT_QUOTES, 'UTF-8'));
                                 $time = date('j F Y',$time);
                                 echo 
@@ -146,7 +143,7 @@
 <script type="text/javascript" src="assets/js/app.js"></script>
 <script type="text/javascript" src="assets/js/respond.min.js"></script>
 <script>
-function showcomments(postid, title, email, contents) 
+function showcomments(postid, contents) 
 {
   if (window.XMLHttpRequest) {
     // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -162,7 +159,8 @@ function showcomments(postid, title, email, contents)
       document.forms.value = "";
     }
   }
-  xmlhttp.open("GET","getcomments.php?postid="+postid+"&title="+title+"&email="+email+"&contents="+contents,true);
+
+  xmlhttp.open("GET","getcomments.php?postid="+postid+"&contents="+contents,true);
   xmlhttp.send();
   return false;
 }
@@ -184,3 +182,9 @@ function showcomments(postid, title, email, contents)
 </script>
 </body>
 </html>
+<?php 
+    }else{
+        header("Location: login.php"); /* Redirect browser */
+        exit();
+    }
+ ?>

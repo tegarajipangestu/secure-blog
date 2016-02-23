@@ -1,4 +1,5 @@
 <?php 
+if (isset($_SESSION["isLogin"])){
 	function getpost($con)
 	{
 		$result = mysqli_query($con,"SELECT * FROM post ORDER BY Date DESC");
@@ -14,4 +15,8 @@
 		$result = mysqli_query($con,"SELECT * FROM comments WHERE Post_Id = ".$postid." ORDER BY Time DESC");
 		return $result;				
 	}
+}else{
+    header("Location: login.php"); /* Redirect browser */
+}
+
  ?>
