@@ -47,8 +47,8 @@ if (isset($_SESSION["isLogin"])){
 	}
 
 	$con = phpsqlconnection();
-	$sql = "INSERT INTO post (Post_Id, Creator_Id, Title, Date, Contents) 
-		VALUES (NULL".",".$creatorid.","."'".$Judul."'".","."'".$Tanggal."'".","."'".$Konten."')";
+	$sql = "INSERT INTO post (Post_Id, Creator_Id, Title, Date, Contents, Image) 
+		VALUES (NULL".",".$creatorid.","."'".$Judul."'".","."'".$Tanggal."'".","."'".$Konten."'".","."'".$target_file."')";
 	if (mysqli_multi_query($con, $sql)) {
 		// echo "Huba";
 	   	header("Location: index.php");
