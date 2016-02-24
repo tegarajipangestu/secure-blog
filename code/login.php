@@ -1,4 +1,24 @@
+<?php 
+  session_start();
+  if(isset($_COOKIE['userSimpleBlog']) && $_COOKIE['userSimpleBlog'] != "false"){
+    include 'mainviewer.php';
+    $con = phpsqlconnection();
+    $result = mysqli_query($con,"SELECT * FROM user WHERE Identifier='".$_COOKIE['userSimpleBlog']."' LIMIT 1");
+    
+    $row = mysqli_fetch_array($result);
+    if (mysqli_num_rows($result) == 1){ 
+        $_SESSION["isLogin"] = true;
+        $_SESSION["myEmail"] = $row['Email'];
+        $_SESSION["myNama"] = $row['Nama'];
+        $_SESSION["myId"] = $row['User_Id'];
 
+        header("Location: index.php");
+    }
+    die();
+  } 
+
+
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
