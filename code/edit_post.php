@@ -72,7 +72,7 @@
             <div id="contact-area">
                 <?php 
                 echo 
-                    "<form method=\"post\" action=\"edit_post_action.php?postid=".$postid."\">";
+                    "<form method=\"post\" action=\"edit_post_action.php?postid=".$postid."\" enctype=\"multipart/form-data\">";
                  ?>
                     <label for="Judul">Judul:</label>
                     <?php 
@@ -88,7 +88,13 @@
                     <?php 
                         echo 
                             "<textarea name=\"Konten\" rows=\"20\" cols=\"20\" id=\"Konten\">".$row['Contents']."</textarea>";
-                     ?>                    
+                     ?>        
+                     <?php 
+                        echo "<img src=\"".$row['Image']."\" alt=\"\">";
+                      ?>
+                    <label for="FileUpload">Gambar:</label>
+                    <input type="file" name="image" id="fileToUpload"><br>
+
                     <input type="submit" name="submit" value="Ubah" class="submit-button">
                 </form>
             </div>
