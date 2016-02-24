@@ -2,6 +2,7 @@
   session_start();
   if (isset($_SESSION["isLogin"])){
     include 'mainviewer.php';
+
  ?>
 
 <!DOCTYPE html>
@@ -47,7 +48,7 @@
     <ul class="nav-primary">
         <li><a href="new_post.php">+ Tambah Post</a></li>
 
-	<li><a href="logout.php" ="">Logout</a></li>
+	<li><a href="logout.php" ="">Logout [ <?php echo($_SESSION["myNama"]); ?> ] </a></li>
     </ul>
 </nav>
 

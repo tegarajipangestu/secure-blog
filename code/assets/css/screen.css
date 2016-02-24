@@ -106,14 +106,14 @@ header#teaser h1 {
 /* Links
 ================================================== */
 a {
-  color: #F40034;
+  color: #000000 !important;
   text-decoration: none;
   -webkit-transition: color .2s ease-in-out;
-     -moz-transition: color .2s ease-in-out;
-          transition: color .2s ease-in-out;
+  -moz-transition: color .2s ease-in-out;
+  transition: color .2s ease-in-out;
 }
 a:hover {
-  color: #F40034;
+  color: #F40034 !important;
 }
 
 /*  Layout
@@ -221,12 +221,11 @@ div.cover > img {
 /*  Article
 ================================================== */
 .art {
-  margin-top: -131px;
+  /* margin-top: -131px; */
 }
 /* Header */
 .art-header {
-  height: 900px;
-  /* Background image is defined in the post */
+  height: 370px;/* Background image is defined in the post */
   background-position: top center;
   background-attachment: scroll;
   overflow: hidden;
@@ -234,7 +233,7 @@ div.cover > img {
 /* Contains the time, title and subtitle for an article */
 .art-header-inner {
   position: absolute;
-  top: 300px;
+  top: 187px;
   left: 50%;
   margin-left: -490px;
 }
@@ -250,7 +249,7 @@ div.cover > img {
   letter-spacing: 4px;
 }
 .art-title {
-  font-size: 100px;
+  /* font-size: 52px; */
   line-height: .9;
   letter-spacing: -2px;
   width: 100%;
@@ -275,17 +274,17 @@ div.cover > img {
 .art-body {
   position: relative;
   width: 100%;
-  margin-top: 100px;
+  /* margin-top: 100px; */
   background: #fff;
   z-index: 100;
   -webkit-box-shadow: 0 -3px 3px rgba(0,0,0,.2);
-     -moz-box-shadow: 0 -3px 3px rgba(0,0,0,.2);
-          box-shadow: 0 -3px 3px rgba(0,0,0,.2);
+  -moz-box-shadow: 0 -3px 3px rgba(0,0,0,.2);
+  box-shadow: 0 -3px 3px rgba(0,0,0,.2);
 }
 .art-body-inner {
   font-family: Georgia,Cambria,"Times New Roman",Times,serif;
   max-width: 640px;
-  padding: 80px 0 50px;
+  /* padding: 80px 0 50px; */
   letter-spacing: 0.01rem;
   font-weight: 400;
   font-style: normal;
@@ -323,7 +322,7 @@ div.cover > img {
 
 .art-body-inner blockquote p:first-child:before {
   color: #ccc;
-  content: "“";
+  content: "Ã¢â‚¬Å“";
   font-size: 4em;
   line-height: 0.1em;
   margin-right: 0.25em;
@@ -389,7 +388,7 @@ div.cover > img {
   overflow: hidden;
 }
 .art-list-item {
-  padding: 40px 0;
+  padding: 5px 0;
   list-style: none;
   overflow: hidden;
   border-bottom: 1px solid #ccc;
@@ -398,7 +397,7 @@ div.cover > img {
   border-bottom: none;
 }
 .art-list-title {
-  font-size: 26px;
+  font-size: 17px;
   line-height: 26px;
   font-weight: 700;
 }
@@ -624,9 +623,9 @@ padding: 0;
   }
   .art-header-inner {
     position: relative;
-    top: 0 !important; /* Important to override JS values */
-    margin-top: 240px !important; /* Important to override JS values */
-    opacity: 1 !important; /* Important to override JS values */
+    top: 0 !important;/* Important to override JS values */
+    margin-top: 40px !important;/* Important to override JS values */
+    opacity: 1 !important;/* Important to override JS values */
   }
   /* Articles no longer have fixed heights */
   .art-header {
@@ -773,8 +772,8 @@ img.right {
 .nav,
 .art-body-inner,
 .footer,
-.art-list {
-    zoom:1; /* For IE 6/7 (trigger hasLayout) */
+.art-list {zoom:1;/* For IE 6/7 (trigger hasLayout) */
+    /* margin-top: 60px; */
 }
 
 
@@ -816,10 +815,10 @@ hr.featured-article {
     text-align: center;
 }
 hr.featured-article:after {
-    content: "✭ Featured Article ✭";
+    /* content: "Ã¢Å“Â­ Featured Article Ã¢Å“Â­"; */
     display: inline-block;
-    position: relative; 
-    top: -0.8em;  
+    position: relative;
+    top: -0.8em;
     font-size: 1.2em;
     padding: 0 0.6em;
     background: white;

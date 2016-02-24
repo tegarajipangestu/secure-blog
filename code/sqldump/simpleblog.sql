@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 172.17.0.3:3306
--- Generation Time: Feb 23, 2016 at 08:42 AM
+-- Generation Time: Feb 23, 2016 at 11:04 AM
 -- Server version: 5.6.29-log
 -- PHP Version: 5.6.9-1+deb.sury.org~trusty+2
 
@@ -39,8 +39,18 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`Comment_Id`, `Creator_Id`, `Post_Id`, `Contents`, `Time`) VALUES
-(14, 3, 32, 'cdscsdc', '2016-02-23 08:38:35'),
-(15, 3, 32, 'cdscsdccsdcsdccdsc', '2016-02-23 08:38:38');
+(16, 3, 34, 'kcnsdknck skdncks ksdncks dksdck sdkc', '2016-02-23 09:51:24'),
+(17, 8, 37, 'ini tegar', '2016-02-23 10:09:37'),
+(18, 8, 34, 'ini tegar', '2016-02-23 10:09:53'),
+(19, 3, 37, 'dcscscd', '2016-02-23 10:12:29'),
+(20, 3, 37, 'ini daniar', '2016-02-23 10:12:36'),
+(21, 3, 37, 'fvdvdv', '2016-02-23 10:14:44'),
+(22, 3, 37, 'cdscscscd', '2016-02-23 10:15:49'),
+(23, 3, 37, 'scnkjcdnkscdsdccds', '2016-02-23 10:20:18'),
+(24, 3, 37, 'cdscscsdc', '2016-02-23 10:21:08'),
+(25, 3, 37, 'cdscscsc', '2016-02-23 10:21:26'),
+(26, 19, 34, 'cdflkvnkdfvnkdnv', '2016-02-23 11:01:19'),
+(27, 19, 37, 'cdscsdcs', '2016-02-23 11:02:01');
 
 -- --------------------------------------------------------
 
@@ -61,7 +71,9 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`Post_Id`, `Creator_Id`, `Title`, `Date`, `Contents`) VALUES
-(32, 3, 'cdscsdcsdc', '2016-02-23 00:00:00', 'Bujangga Manik mangrupa salah sahiji naskah dina basa Sunda anu pohara gedé ajénna. Naskah ieu ditulis dina wangun puisi naratif dina daun nipah anu kiwari disimpen di Pabukon Bodleian di Oxford saprak taun 1627 (MS Jav. b. 3 (R), cf. Noorduyn 1968:469, Ricklefs/Voorhoeve 1977:181). Ieu naskah diwangun ku 29 lambar daun nipah, anu unggal lambarna ngandung kira-kira 56 jajar (rumpaka) anu tiap rumpakana diwangun ku 8 padalisan, bentuk puisi Sunda buhun.\r\n\r\nAnu ngalalakon dina ieu naskah téh nyaéta Prabu Jaya Pakuan nu boga landihan Bujangga Manik, saurang resi Hindu anu, sanajan mangrupa saurang prabu di karaton Pakuan Pajajaran (puseur dayeuh Karajaan Sunda, anu perenahna di wewengkon anu ayeuna jadi dayeuh Bogor), leuwih resep ngalakonan hirup jadi resi. Salaku resi, manéhna ngumbara mapay kabuyutan atawa puseur kaagamaan (Hindu) nu aya di Jawa jeung Bali. Anjeunna nyaritakeun yén pangumbaraanana téh dipaju dua kali. Samulangna ti Jawa, Bujangga Manik tatapa di hiji gunung di Tanah Sunda (bale geusan ngajadina) nepi ka pupusna.');
+(34, 3, 'Amerika Serikat ', '2016-02-24 00:00:00', 'Amerika Serikat, disingkat dengan AS (bahasa Inggris: United States of America/U.S.A. disingkat United States/US), atau secara umum dikenal dengan Amerika saja,[catatan 1] adalah sebuah negara republik konstitusional federal yang terdiri dari lima puluh negara bagian dan sebuah distrik federal.[6] Negara ini terletak di bagian tengah Amerika Utara, yang menjadi lokasi dari empat puluh delapan negara bagian yang saling bersebelahan, beserta distrik ibu kota Washington, D.C.. Amerika Serikat diapit oleh Samudra Pasifik dan Atlantik di sebelah barat dan timur, berbatasan dengan Kanada di sebelah utara, dan Meksiko di sebelah selatan. Dua negara bagian lainnya, yaitu Alaska dan Hawaii, terletak terpisah dari dataran utama Amerika Serikat. Negara bagian Alaska terletak di sebelah ujung barat laut Amerika Utara, berbatasan dengan Kanada di sebelah timur dan Rusia di sebelah barat, yang dipisahkan oleh Selat Bering. Sedangkan negara bagian Hawaii adalah sebuah kepulauan yang berlokasi di Samudra Pasifik. Amerika Serikat juga memiliki beberapa teritori di Pasifik dan Karibia. Dengan luas wilayah 3,79  juta mil persegi (9,83 juta km2) dan jumlah penduduk sebanyak 315 juta jiwa, Amerika Serikat merupakan negara terluas ketiga atau keempat di dunia, dan terbesar ketiga menurut jumlah penduduk. Amerika Serikat adalah salah satu negara yang paling multietnik dan paling multikultural di dunia, yang muncul akibat adanya imigrasi besar-besaran dari berbagai penjuru dunia.[7] Iklim dan geografi Amerika Serikat juga sangat beragam dan negara ini menjadi tempat tinggal bagi beragam spesies.'),
+(35, 3, 'Dewan Keamanan Perserikatan Bangsa-Bangsa', '2016-02-24 00:00:00', 'Dewan Keamanan PBB adalah salah satu dari enam badan utama PBB. Piagam PBB memberikan mandat kepada Dewan Keamanan untuk menjaga perdamaian dan keamanan internasional. Piagam PBB juga memberikan kewenangan kepada Dewan Kemanan untuk:\r\n1. menginvestigasi situasi apapun yang mengancam perdamaian dunia;\r\n2. merekomendasikan prosedur penyelesaian sengketa secara damai;\r\n3. meminta seluruh negara anggota PBB untuk memutuskan hubungan ekonomi, serta laut, udara, pos, komunikasi radio, atau hubungan diplomatic; dan\r\n4. melaksanakan keputusan Dewan Keamanan secara militer, atau dengan cara-cara lainnya.'),
+(37, 8, 'Republik Rakyat Tiongkok', '2016-02-26 00:00:00', 'Sebagai negara dengan penduduk terbanyak di dunia, dengan populasi melebihi 1,363 miliar jiwa (perkiraan 2014), yang mayoritas merupakan bangsa Tionghoa. Untuk menekan jumlah penduduk, pemerintah giat menggalakkan kebijakan satu anak. Tiongkok Daratan merupakan istilah yang digunakan untuk merujuk kepada kawasan di bawah pemerintahan RRT dan tidak termasuk kawasan administrasi khusus Hong Kong dan Makau, sementara nama Republik Tiongkok mengacu pada entitas lain yang dulu pernah menguasai Tiongkok sejak tahun 1912 hingga kekalahannya pada Perang Saudara Tiongkok. Saat ini Republik Tiongkok hanya menguasai pulau Taiwan, dan beribukota di Taipei, oleh karena itu lazim disebut Tionghoa Taipei, terutama dalam even-even olahraga. RRT mengklaim wilayah milik Republik Tiongkok (yang umum dikenal dengan Taiwan) namun tidak memerintahnya, sedangkan Republik Tiongkok mengklaim kedaulatan terhadap seluruh Tiongkok daratan yang saat ini dikuasai RRT. (lihat pula: Status politik Taiwan)[6]');
 
 -- --------------------------------------------------------
 
@@ -91,7 +103,9 @@ INSERT INTO `user` (`User_Id`, `Nama`, `Email`, `Password`) VALUES
 (14, 'rr', 'rr@gmail.com', 'rr'),
 (15, 'ww', 'ww@gmail.com', 'ww'),
 (16, 'tt', 'tt@gmail.com', 'tt'),
-(17, 'qq', 'qq@gmail.com', 'qq');
+(17, 'qq', 'qq@gmail.com', 'qq'),
+(18, 'Tegar Aji Pangestu', 'tr@gmail.com', 'tr'),
+(19, 'Odie Syah', 'odie@gmail.com', 'od');
 
 --
 -- Indexes for dumped tables
@@ -128,17 +142,17 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `Comment_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `Comment_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `Post_Id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `Post_Id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `User_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `User_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- Constraints for dumped tables
 --

@@ -1,4 +1,5 @@
 <?php 
+session_start();
 	include 'mainviewer.php';
 	$email = $_POST['email'];
 	$password = $_POST['password'];

@@ -1,6 +1,5 @@
 <?php 
 session_start();
-if (isset($_SESSION["isLogin"])){
 	include 'mainviewer.php';
 	$nama = $_POST['nama'];
 	$email = $_POST['email'];
@@ -20,7 +19,4 @@ if (isset($_SESSION["isLogin"])){
 		header("Location: signup.php");
 	}
 	die();
-}else{
-    header("Location: login.php"); /* Redirect browser */
-}
  ?>

@@ -28,26 +28,34 @@
 		$time = date('j F Y',$time);
 		echo 
 			"<div class=\"art-list-time\">".$time."</div>
-            <div class=\"art-list-time\"><span style=\"color:#F40034;\">&#10029;</span> Featured</div>";
-			if (str_word_count(htmlspecialchars($row['Contents'], ENT_QUOTES, 'UTF-8'))>30)
+            <div class=\"art-list-time\"><span style=\"color:#F40034;\">&#10029;</span> By ".$row['Nama'].":</div>";
+			if (str_word_count(htmlspecialchars($row['Contents'], ENT_QUOTES, 'UTF-8'))>47)
 			{
 				echo 
 	            "</div>
-	            <p>".htmlspecialchars(implode(' ', array_slice(explode(' ',$row['Contents']), 0, 30)), ENT_QUOTES, 'UTF-8')."&hellip;</p>
-	            <p>
-	              <a href=\"edit_post.php?postid=".htmlspecialchars($row['Post_Id'], ENT_QUOTES, 'UTF-8')."\">Edit</a> | <a href=\"javascript:void(0)\" onclick=\"validatedelete".htmlspecialchars($row['Post_Id'], ENT_QUOTES, 'UTF-8')."()\">Hapus</a>
-	            </p>
-	        </li>";
+	            <p>".htmlspecialchars(implode(' ', array_slice(explode(' ',$row['Contents']), 0, 47)), ENT_QUOTES, 'UTF-8')."&hellip;</p>";
+	            if($row['Nama']==$_SESSION['myNama']){
+		           echo
+		            "<p>
+		              <b> <a href=\"edit_post.php?postid=".htmlspecialchars($row['Post_Id'], ENT_QUOTES, 'UTF-8')."\">Edit</a> | <a href=\"javascript:void(0)\" onclick=\"validatedelete".htmlspecialchars($row['Post_Id'], ENT_QUOTES, 'UTF-8')."()\">Hapus</a> </b>
+		            </p>";
+	        	}
+	        echo
+	        "</li>";
 			}
 			else
 			{
 				echo 
 	            "</div>
-	            <p>".htmlspecialchars($row['Contents'], ENT_QUOTES, 'UTF-8')."</p>
-	            <p>
-	              <a href=\"edit_post.php?postid=".htmlspecialchars($row['Post_Id'], ENT_QUOTES, 'UTF-8')."\">Edit</a> | <a href=\"javascript:void(0)\" onclick=\"validatedelete".htmlspecialchars($row['Post_Id'], ENT_QUOTES, 'UTF-8')."()\">Hapus</a>
-	            </p>
-	        </li>";				
+	            <p>".htmlspecialchars($row['Contents'], ENT_QUOTES, 'UTF-8')."</p>";
+	            if($row['Nama']==$_SESSION['myNama']){
+		           echo
+		           "<p>
+	              <b><a href=\"edit_post.php?postid=".htmlspecialchars($row['Post_Id'], ENT_QUOTES, 'UTF-8')."\">Edit</a> | <a href=\"javascript:void(0)\" onclick=\"validatedelete".htmlspecialchars($row['Post_Id'], ENT_QUOTES, 'UTF-8')."()\">Hapus</a> </b>
+	            </p>";
+	        	}
+	        echo
+	        "</li>";			
 			}
 			echo
 			"<script>

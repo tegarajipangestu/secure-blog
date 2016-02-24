@@ -54,6 +54,7 @@
     <div class="art-body">
         <div class="art-body-inner">
     <?php 
+        session_start();
         if (isset($_SESSION["msg"])){
             echo ($_SESSION["msg"]);
             unset($_SESSION['msg']);
@@ -69,7 +70,7 @@
                     <input type="text" name="email" id="email">
 
                     <label for="password">Password:</label>
-                    <input type="text" name="password" id="password">
+                    <input type="password" name="password" id="password">
 
                     <input type="submit"  name="submit" value="SignUp" class="submit-button">
                 </form>

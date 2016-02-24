@@ -56,7 +56,7 @@
 
     <div class="art-body">
         <div class="art-body-inner">
-            <h2>Tambah Post</h2>
+            <h2 style="margin-top: 24px;">Tambah Post</h2>
             <div id="contact-area">
                  <form name="PostForm" method="post" onSubmit="return validateDate()" action="new_post_action.php">
                     <label for="Judul">Judul:</label>

@@ -1,18 +1,24 @@
 <?php 
   session_start();
+
   if (isset($_SESSION["isLogin"])){
+
+
+    include 'mainviewer.php';
+    $con = phpsqlconnection();
+    $postid = $_GET['postid'];
+
+    $getpostresult = getspecificpost($con,$postid);
+        $row = mysqli_fetch_array($getpostresult);
+    if ($row['Nama'] != $_SESSION['myNama']) {
+        header("Location: index.php"); /* Redirect browser */
+        exit();
+    }
  ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-<?php 
-    include 'mainviewer.php';
-    $con = phpsqlconnection();
-    $postid = $_GET['postid'];
-    $getpostresult = getspecificpost($con,$postid);
-    $row = mysqli_fetch_array($getpostresult);
- ?>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">

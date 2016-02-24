@@ -9,7 +9,7 @@ if (isset($_SESSION["isLogin"])){
     $sql ="INSERT INTO comments (Comment_Id, Creator_Id, Post_Id, Contents) 
         VALUES (NULL".",".$creatorid.","."'".$postid."'".","."'".$contents."')";
     if (mysqli_multi_query($con, $sql)) {
-        $getcommentsresult = mysqli_query($con,"SELECT * FROM comments WHERE Post_Id = ".$postid." ORDER BY Time DESC");    
+        $getcommentsresult = mysqli_query($con,"SELECT user.Nama , comments.* FROM comments INNER join user ON comments.Creator_Id = user.User_Id WHERE Post_Id = ".$postid." ORDER BY Time DESC");    
         while($comments = mysqli_fetch_array($getcommentsresult)) {                                
             echo
             "<li class=\"art-list-item\">
@@ -20,7 +20,8 @@ if (isset($_SESSION["isLogin"])){
             echo 
             "<div class=\"art-list-time\">".$time."</div> </div>";
             echo
-            "<p>".htmlspecialchars($comments['Contents'], ENT_QUOTES, 'UTF-8')."</p>";                                
+            "<p> By: ".htmlspecialchars($comments['Nama'], ENT_QUOTES, 'UTF-8')."<br>".  
+            "".htmlspecialchars($comments['Contents'], ENT_QUOTES, 'UTF-8')."</p>";                               
             echo "</li>";
         }
     } else {

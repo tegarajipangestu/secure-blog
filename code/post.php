@@ -72,6 +72,9 @@
              <?php 
               echo "<h2 class=\"art-title\">".htmlspecialchars($row['Title'], ENT_QUOTES, 'UTF-8')."</h2>";
               ?>
+              <?php 
+                echo "<h6 style= 'text-align: center;'> by : ".$row['Nama']."</h6>";
+                ?>
             <p class="art-subtitle"></p>
         </div>
     </header>
@@ -84,7 +87,7 @@
              ?>
             <hr />
             
-            <h2>Komentar</h2>
+            <h4>Komentar</h4>
 
             <div id="contact-area">
                 <?php 
@@ -108,7 +111,8 @@
                                 echo 
                                 "<div class=\"art-list-time\">".$time."</div> </div>";
                                 echo
-                                "<p>".htmlspecialchars($comments['Contents'], ENT_QUOTES, 'UTF-8')."</p>";                                
+                                "<p> By: ".htmlspecialchars($comments['Nama'], ENT_QUOTES, 'UTF-8')."<br>". 
+                                "".htmlspecialchars($comments['Contents'], ENT_QUOTES, 'UTF-8')."</p>";                                
                                 echo "</li>";
                             }
                          ?>
