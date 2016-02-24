@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 172.17.0.3:3306
--- Generation Time: Feb 24, 2016 at 01:16 PM
--- Server version: 5.5.48-log
+-- Generation Time: Feb 24, 2016 at 01:37 PM
+-- Server version: 5.6.29-log
 -- PHP Version: 5.6.9-1+deb.sury.org~trusty+2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -88,26 +88,28 @@ CREATE TABLE `user` (
   `User_Id` int(11) NOT NULL,
   `Nama` varchar(25) NOT NULL,
   `Email` varchar(25) NOT NULL,
-  `Password` varchar(25) NOT NULL
+  `Password` varchar(25) NOT NULL,
+  `Token` varchar(256) NOT NULL,
+  `Identifier` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`User_Id`, `Nama`, `Email`, `Password`) VALUES
-(3, 'Daniar Heri Kurniawan', 'daniar.h.k@gmail.com', 'da'),
-(8, 'Tegar Aji Pangestu', 'tegar@gmail.com', 'te'),
-(9, 'Fandi Azam Wiranata', 'fandi@gmail.com', 'fa'),
-(10, 'Kurnia Mega', 'kurnia@gmail.com', 'ku'),
-(11, 'Subagyo', 'su@gmail.com', 'su'),
-(12, 'aa', 'aa@gmail.com', 'aa'),
-(13, 'bb', 'bb@gmail.com', 'bb'),
-(14, 'rr', 'rr@gmail.com', 'rr'),
-(15, 'ww', 'ww@gmail.com', 'ww'),
-(16, 'tt', 'tt@gmail.com', 'tt'),
-(17, 'qq', 'qq@gmail.com', 'qq'),
-(18, 'tegar', 'mamam@gmail.com', 'mamam');
+INSERT INTO `user` (`User_Id`, `Nama`, `Email`, `Password`, `Token`, `Identifier`) VALUES
+(3, 'Daniar Heri Kurniawan', 'daniar.h.k@gmail.com', 'da', '', ''),
+(8, 'Tegar Aji Pangestu', 'tegar@gmail.com', 'te', '', ''),
+(9, 'Fandi Azam Wiranata', 'fandi@gmail.com', 'fa', '', ''),
+(10, 'Kurnia Mega', 'kurnia@gmail.com', 'ku', '', ''),
+(11, 'Subagyo', 'su@gmail.com', 'su', '', ''),
+(12, 'aa', 'aa@gmail.com', 'aa', '', ''),
+(13, 'bb', 'bb@gmail.com', 'bb', '', ''),
+(14, 'rr', 'rr@gmail.com', 'rr', '', ''),
+(15, 'ww', 'ww@gmail.com', 'ww', '', ''),
+(16, 'tt', 'tt@gmail.com', 'tt', '', ''),
+(17, 'qq', 'qq@gmail.com', 'qq', '', ''),
+(18, 'tegar', 'mamam@gmail.com', 'mamam', '', '');
 
 --
 -- Indexes for dumped tables

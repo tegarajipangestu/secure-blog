@@ -1,6 +1,9 @@
 <?php 
   session_start();
-  if (isset($_SESSION["isLogin"])){
+  if(isset($_COOKIE['userSimpleBlog'])){
+    $_SESSION["isLogin"] = true;
+  }
+  if (isset($_SESSION["isLogin"]) ){
     include 'mainviewer.php';
 
  ?>
