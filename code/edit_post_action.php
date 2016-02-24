@@ -68,7 +68,7 @@ if (isset($_SESSION["isLogin"])){
 			mysqli_query($con,"UPDATE post SET Title='".$Judul."'".","."Date='".$Tanggal."'".","."Contents='".$Konten."'"."WHERE Post_Id=".$postid);
 			echo "UPDATE post SET Title='".$Judul."'".","."Date='".$Tanggal."'".","."Contents='".$Konten."'"."WHERE Post_Id=".$postid;
 		}
-//		header("Location: index.php");
+		header("Location: index.php");
 	}
 
 	die();

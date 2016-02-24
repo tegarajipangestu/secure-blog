@@ -90,7 +90,9 @@
                             "<textarea name=\"Konten\" rows=\"20\" cols=\"20\" id=\"Konten\">".$row['Contents']."</textarea>";
                      ?>        
                      <?php 
-                        echo "<img src=\"".$row['Image']."\" alt=\"\">";
+                        if (isset($row['Image'])) {
+                            echo "<img src=\"".$row['Image']."\" alt=\"\">";                            
+                        }
                       ?>
                     <label for="FileUpload">Gambar:</label>
                     <input type="file" name="image" id="fileToUpload"><br>
