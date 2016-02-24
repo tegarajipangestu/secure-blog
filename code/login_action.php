@@ -12,7 +12,7 @@ session_start();
 	$con = phpsqlconnection();
 	$result = mysqli_query($con,"SELECT * FROM user WHERE Email='$email' AND Password='$password' LIMIT 1");
 	if (mysqli_num_rows($result) == 1) {
-		// header("Location: ".isset($_POST['isRemembered'])."_".($_COOKIE[$cookie_name]));
+		// header("Location: ".($_COOKIE[$cookie_name]));
 		$_SESSION["isLogin"] = true;
 		$row = mysqli_fetch_array($result);
 		$_SESSION["myEmail"] = $row['Email'];
