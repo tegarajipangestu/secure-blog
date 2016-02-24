@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 172.17.0.3:3306
--- Generation Time: Feb 24, 2016 at 05:01 PM
--- Server version: 5.5.48-log
+-- Generation Time: Feb 24, 2016 at 05:06 PM
+-- Server version: 5.6.29-log
 -- PHP Version: 5.6.9-1+deb.sury.org~trusty+2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -91,26 +91,27 @@ CREATE TABLE `user` (
   `Password` varchar(25) NOT NULL,
   `base2` int(11) NOT NULL,
   `random` int(11) NOT NULL,
-  `shared_key` int(11) NOT NULL
+  `shared_key` int(11) NOT NULL,
+  `Identifier` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`User_Id`, `Nama`, `Email`, `Password`, `base2`, `random`, `shared_key`) VALUES
-(3, 'Daniar Heri Kurniawan', 'daniar.h.k@gmail.com', 'da', 0, 0, 0),
-(8, 'Tegar Aji Pangestu', 'tegar@gmail.com', 'te', 0, 0, 0),
-(9, 'Fandi Azam Wiranata', 'fandi@gmail.com', 'fa', 0, 0, 0),
-(10, 'Kurnia Mega', 'kurnia@gmail.com', 'ku', 0, 0, 0),
-(11, 'Subagyo', 'su@gmail.com', 'su', 0, 0, 0),
-(12, 'aa', 'aa@gmail.com', 'aa', 0, 0, 0),
-(13, 'bb', 'bb@gmail.com', 'bb', 0, 0, 0),
-(14, 'rr', 'rr@gmail.com', 'rr', 0, 0, 0),
-(15, 'ww', 'ww@gmail.com', 'ww', 0, 0, 0),
-(16, 'tt', 'tt@gmail.com', 'tt', 0, 0, 0),
-(17, 'qq', 'qq@gmail.com', 'qq', 0, 0, 0),
-(18, 'tegar', 'mamam@gmail.com', 'mamam', 0, 0, 0);
+INSERT INTO `user` (`User_Id`, `Nama`, `Email`, `Password`, `base2`, `random`, `shared_key`, `Identifier`) VALUES
+(3, 'Daniar Heri Kurniawan', 'daniar.h.k@gmail.com', 'da', 0, 0, 0, '43824d5b0e51c1b0b7329b91c037ff3014c53b291471645fa9c1542f20594ff0'),
+(8, 'Tegar Aji Pangestu', 'tegar@gmail.com', 'te', 0, 0, 0, ''),
+(9, 'Fandi Azam Wiranata', 'fandi@gmail.com', 'fa', 0, 0, 0, ''),
+(10, 'Kurnia Mega', 'kurnia@gmail.com', 'ku', 0, 0, 0, ''),
+(11, 'Subagyo', 'su@gmail.com', 'su', 0, 0, 0, ''),
+(12, 'aa', 'aa@gmail.com', 'aa', 0, 0, 0, ''),
+(13, 'bb', 'bb@gmail.com', 'bb', 0, 0, 0, ''),
+(14, 'rr', 'rr@gmail.com', 'rr', 0, 0, 0, ''),
+(15, 'ww', 'ww@gmail.com', 'ww', 0, 0, 0, ''),
+(16, 'tt', 'tt@gmail.com', 'tt', 0, 0, 0, ''),
+(17, 'qq', 'qq@gmail.com', 'qq', 0, 0, 0, ''),
+(18, 'tegar', 'mamam@gmail.com', 'mamam', 0, 0, 0, '');
 
 --
 -- Indexes for dumped tables
