@@ -61,13 +61,17 @@
 
                     <label for="password">Password:</label>
                     <input type="password" name="password" id="password">
-
-                    <input type="submit"  name="submit" value="Login" class="submit-button">
+                    <div style="text-align: right">
+                        <input type="checkbox" name="isRemembered" value="true" style="width:20px; margin-left: 0px"> Remember me, please!<br>                        
+                        <input type="submit"  name="submit" value="Login" class="submit-button">
+                    </div>
                 </form>
             </div>
         <div class="row">
             Daftarkan diri Anda jika belum memiliki akun! <a href="signup.php">SignUp</a>
+
         </div>
+        <br>
         </div>
     </div>
 
