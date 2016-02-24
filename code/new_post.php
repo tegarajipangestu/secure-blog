@@ -58,7 +58,7 @@
         <div class="art-body-inner">
             <h2 style="margin-top: 24px;">Tambah Post</h2>
             <div id="contact-area">
-                 <form name="PostForm" method="post" onSubmit="return validateDate()" action="new_post_action.php">
+                 <form name="PostForm" method="post" onSubmit="return validateDate()" action="new_post_action.php" enctype="multipart/form-data">
                     <label for="Judul">Judul:</label>
                     <input type="text" name="Judul" id="Judul">
 
@@ -67,7 +67,10 @@
                     
                     <label for="Konten">Konten:</label><br>
                     <textarea name="Konten" rows="20" cols="20" id="Konten"></textarea>
-
+                    
+                    <label for="FileUpload">Gambar:</label>
+                    <input type="file" name="image" id="fileToUpload"><br>
+            
                     <input type="submit" name="submit" value="Simpan" class="submit-button">
                 </form>
             </div>
