@@ -13,6 +13,8 @@
         $_SESSION["myId"] = $row['User_Id'];
 
         header("Location: index.php");
+    }else{
+        setcookie('userSimpleBlog', "false", 0);
     }
     die();
   } 

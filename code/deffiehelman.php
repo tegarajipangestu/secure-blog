@@ -1,11 +1,25 @@
 <?php 
+    session_start();
+    define ("MAX_INT",20);
+//    include 'mainviewer.php';
 
-    define ("MAX_INT",2147483647);
-    include 'mainviewer.php';
+
+    function phpsqlconnection ()
+    {
+        $con=mysqli_connect("mysql:3306","root","dev","simpleblog");
+        if (mysqli_connect_errno()){
+            echo "Failed to connect to MySQL: " . mysqli_connect_error();
+            echo "Error: Unable to connect to MySQL." . PHP_EOL;
+            echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
+            echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
+        exit;
+        }
+        return $con;
+    }
 
 
     function generateNumber() {
-        return random_int(0,MAX_INT);
+        return rand(0,MAX_INT);
     }
 
     function computePublic($number1, $power, $number2) {
@@ -18,53 +32,46 @@
         return pow($number1, $power) % $number2;
     }
 
-
-    function deffiehelman() {
-        var xhttp = new XMLHttpRequest();
-
-        number1 = generateNumber();
-        number2 = generateNumber();
-        xhttp.open("GET", "deffiehelman.php?action=1&number1="+number1+"&number2="+number2, false);
-        xhttp.send();
-
-        sharedPublicServer = xhttp.responseText;
-
-        randomPrivate = generateNumber();
-        sharedPublicClient = computePublic(number1,number2);
-
-        var xhttp = new XMLHttpRequest();
-        xhttp.open("GET", "deffiehelman.php?action=2&sharedPublicClient"+sharedPublicClient, false);
-        xhttp.send();
-
-        sharedKey = sharedPrivate(sharedPublicServer,randomPrivate,number2);
-
-        return sharedKey;
-    }
-
     $action = $_GET['action'];
+
+    $con = phpsqlconnection();
+
     if ($action==1) {
+        // echo "action = ".$action; echo " ";
         $number1 = $_GET['number1'];
         $number2 = $_GET['number2'];
         $randomPrivate = generateNumber();
 
-        sharedPublicServer =  computePublic($number1,$randomPrivate,$number2);
+        $sharedPublicServer =  computePublic($number1,$randomPrivate,$number2);
         //masukin ke database
-        $con = phpsqlconnection();
-        $sql = "INSERT INTO post (Post_Id, Creator_Id, Title, Date, Contents, Image) 
-            VALUES (NULL".",".$creatorid.","."'".$Judul."'".","."'".$Tanggal."'".","."'".$Konten."'".","."'".$target_file."')";
-        if (mysqli_multi_query($con, $sql)) {
-            // echo "Huba";
-            header("Location: index.php");
-        } else {
-            echo "Error: " . $sql . "<br>" . mysqli_error($con);
-        }
 
+        $sql =  "UPDATE user SET base2=".$number2.", random=".$randomPrivate." WHERE User_Id=".$_SESSION["myId"];
+        mysqli_query($con,$sql);
 
-        echo sharedPublicServer;
+//        echo "Sini";
+        // echo "number1 = "+$number1; echo " ";
+        // echo "number2 = "+$number2; echo " ";
+        // echo "randomPrivate = "+$randomPrivate; echo " ";
+        // echo "sharedPublicServer = "+$sharedPublicServer; echo " ";
+        echo $sharedPublicServer;
+        die();
     }
     else if ($action==2) {
-        $number1 = $_GET['number1'];
-        sharedKey = sharedPrivate()                
-    }
+        $sharedPublicClient = $_GET['sharedPublicClient'];
+        $sql="SELECT * FROM user WHERE User_Id=".$_SESSION["myId"]." LIMIT 1";
 
+        $result = mysqli_query($con,$sql);   
+
+        $row = mysqli_fetch_array($result);
+        if (mysqli_num_rows($result) == 1){ 
+                $base2 =  $row['base2'];
+                $random = $row['random'];
+                $sharedKey = sharedPrivate($sharedPublicClient,$random,$base2);                
+                // echo $shared_key; echo " ";
+                $sql =  "UPDATE user SET shared_key=".$sharedKey." WHERE User_Id=".$_SESSION["myId"];
+                mysqli_query($con,$sql);
+                echo $sharedKey;
+        }
+        die();
+    }
  ?>

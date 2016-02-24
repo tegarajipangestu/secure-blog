@@ -77,6 +77,8 @@
     </div>
 </div>
 
+<button onclick="deffiehelman()">Mamam</button>
+
 <footer class="footer">
     <div class="back-to-top"><a href="">Back to top</a></div>
     <!-- <div class="footer-nav"><p></p></div> -->
@@ -101,6 +103,7 @@
 <script type="text/javascript" src="assets/js/fittext.js"></script>
 <script type="text/javascript" src="assets/js/app.js"></script>
 <script type="text/javascript" src="assets/js/respond.min.js"></script>
+<script type="text/javascript" src="assets/js/deffiehelman.js"></script>
 
 <script>
   
