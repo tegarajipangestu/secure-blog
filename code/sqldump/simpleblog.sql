@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 172.17.0.3:3306
--- Generation Time: Feb 24, 2016 at 01:37 PM
--- Server version: 5.6.29-log
+-- Generation Time: Feb 24, 2016 at 05:01 PM
+-- Server version: 5.5.48-log
 -- PHP Version: 5.6.9-1+deb.sury.org~trusty+2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -70,7 +70,7 @@ INSERT INTO `post` (`Post_Id`, `Creator_Id`, `Title`, `Date`, `Contents`, `Image
 (38, 3, 'Mamam', '2016-12-12 00:00:00', 'mamam; CREATE DATABASE Suppliers', NULL),
 (39, 18, 'Aing mamam', '2020-12-12 00:00:00', 'Aing juga mamam', NULL),
 (40, 18, 'Mamam', '2016-12-12 00:00:00', 'Mamam', NULL),
-(41, 18, 'aidjnaijfni', '3242-12-12 00:00:00', 'aksjdnaisjfniajdsfn', NULL),
+(41, 18, 'aidjnaijfni', '3242-12-12 00:00:00', 'aksjdnaisjfniajdsfn', 'uploads/Screenshot from 2016-02-17 11:37:55.png'),
 (42, 18, 'aidjnaijfni', '3242-12-12 00:00:00', 'aksjdnaisjfniajdsfn', NULL),
 (43, 18, 'aidjnaijfni', '3242-12-12 00:00:00', 'aksjdnaisjfniajdsfn', NULL),
 (44, 18, 'aidjnaijfni', '3242-12-12 00:00:00', 'aksjdnaisjfniajdsfn', NULL),
@@ -89,27 +89,28 @@ CREATE TABLE `user` (
   `Nama` varchar(25) NOT NULL,
   `Email` varchar(25) NOT NULL,
   `Password` varchar(25) NOT NULL,
-  `Token` varchar(256) NOT NULL,
-  `Identifier` varchar(256) NOT NULL
+  `base2` int(11) NOT NULL,
+  `random` int(11) NOT NULL,
+  `shared_key` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`User_Id`, `Nama`, `Email`, `Password`, `Token`, `Identifier`) VALUES
-(3, 'Daniar Heri Kurniawan', 'daniar.h.k@gmail.com', 'da', '', ''),
-(8, 'Tegar Aji Pangestu', 'tegar@gmail.com', 'te', '', ''),
-(9, 'Fandi Azam Wiranata', 'fandi@gmail.com', 'fa', '', ''),
-(10, 'Kurnia Mega', 'kurnia@gmail.com', 'ku', '', ''),
-(11, 'Subagyo', 'su@gmail.com', 'su', '', ''),
-(12, 'aa', 'aa@gmail.com', 'aa', '', ''),
-(13, 'bb', 'bb@gmail.com', 'bb', '', ''),
-(14, 'rr', 'rr@gmail.com', 'rr', '', ''),
-(15, 'ww', 'ww@gmail.com', 'ww', '', ''),
-(16, 'tt', 'tt@gmail.com', 'tt', '', ''),
-(17, 'qq', 'qq@gmail.com', 'qq', '', ''),
-(18, 'tegar', 'mamam@gmail.com', 'mamam', '', '');
+INSERT INTO `user` (`User_Id`, `Nama`, `Email`, `Password`, `base2`, `random`, `shared_key`) VALUES
+(3, 'Daniar Heri Kurniawan', 'daniar.h.k@gmail.com', 'da', 0, 0, 0),
+(8, 'Tegar Aji Pangestu', 'tegar@gmail.com', 'te', 0, 0, 0),
+(9, 'Fandi Azam Wiranata', 'fandi@gmail.com', 'fa', 0, 0, 0),
+(10, 'Kurnia Mega', 'kurnia@gmail.com', 'ku', 0, 0, 0),
+(11, 'Subagyo', 'su@gmail.com', 'su', 0, 0, 0),
+(12, 'aa', 'aa@gmail.com', 'aa', 0, 0, 0),
+(13, 'bb', 'bb@gmail.com', 'bb', 0, 0, 0),
+(14, 'rr', 'rr@gmail.com', 'rr', 0, 0, 0),
+(15, 'ww', 'ww@gmail.com', 'ww', 0, 0, 0),
+(16, 'tt', 'tt@gmail.com', 'tt', 0, 0, 0),
+(17, 'qq', 'qq@gmail.com', 'qq', 0, 0, 0),
+(18, 'tegar', 'mamam@gmail.com', 'mamam', 0, 0, 0);
 
 --
 -- Indexes for dumped tables
