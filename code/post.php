@@ -87,6 +87,12 @@
              ?>
             <hr />
             
+           <?php 
+              if (isset($row['Image'])) {
+                  echo "<img src=\"".$row['Image']."\" alt=\"\">";                            
+              }
+            ?>
+
             <h4>Komentar</h4>
 
             <div id="contact-area">
@@ -94,11 +100,6 @@
                     echo 
                     "<form name=\"AddComment\" method=\"post\"  onSubmit=\"return showcomments(".$postid.",Komentar.value)\">";
                  ?> 
-                 <?php 
-                    if (isset($row['Image'])) {
-                        echo "<img src=\"".$row['Image']."\" alt=\"\">";                            
-                    }
-                  ?>
 
                     <label for="Komentar">Komentar:</label><br>
                     <textarea name="Komentar" rows="20" cols="20" id="Komentar"></textarea>
