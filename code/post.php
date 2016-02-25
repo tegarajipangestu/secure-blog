@@ -88,7 +88,7 @@
             <hr />
             
            <?php 
-              if (isset($row['Image'])) {
+              if ($row['Image']) {
                   echo "<img src=\"".$row['Image']."\" alt=\"\">";                            
               }
             ?>
@@ -156,23 +156,25 @@
 <script>
 function showcomments(postid, contents) 
 {
-  if (window.XMLHttpRequest) {
-    // code for IE7+, Firefox, Chrome, Opera, Safari
-    xmlhttp=new XMLHttpRequest();
-  } else { // code for IE6, IE5
-    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-  }
-  xmlhttp.onreadystatechange=function() 
-  {
-    if (xmlhttp.readyState==4 && xmlhttp.status==200) 
-    {
-      document.getElementById ("comments").innerHTML=xmlhttp.responseText;
-      document.forms.value = "";
+  if (contents!="") {
+    if (window.XMLHttpRequest) {
+      // code for IE7+, Firefox, Chrome, Opera, Safari
+      xmlhttp=new XMLHttpRequest();
+    } else { // code for IE6, IE5
+      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
     }
-  }
+    xmlhttp.onreadystatechange=function() 
+    {
+      if (xmlhttp.readyState==4 && xmlhttp.status==200) 
+      {
+        document.getElementById ("comments").innerHTML=xmlhttp.responseText;
+        document.forms.value = "";
+      }
+    }
 
-  xmlhttp.open("GET","getcomments.php?postid="+postid+"&contents="+contents,true);
-  xmlhttp.send();
+    xmlhttp.open("GET","getcomments.php?postid="+postid+"&contents="+contents,true);
+    xmlhttp.send();    
+  }
   return false;
 }
 </script>
