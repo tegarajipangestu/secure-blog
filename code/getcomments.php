@@ -6,10 +6,21 @@ if (isset($_SESSION["isLogin"])){
     $contents = htmlspecialchars($_GET['contents'], ENT_QUOTES, 'UTF-8');
     $creatorid = $_SESSION["myId"];
     $con = phpsqlconnection();
-    $sql ="INSERT INTO comments (Comment_Id, Creator_Id, Post_Id, Contents) 
-        VALUES (NULL".",".$creatorid.","."'".$postid."'".","."'".$contents."')";
-    if (mysqli_multi_query($con, $sql)) {
-        $getcommentsresult = mysqli_query($con,"SELECT user.Nama , comments.* FROM comments INNER join user ON comments.Creator_Id = user.User_Id WHERE Post_Id = ".$postid." ORDER BY Time DESC");    
+    $stmt = $con->prepare(
+    "INSERT INTO comments (Comment_Id, Creator_Id, Post_Id, Contents) 
+        VALUES (NULL,?,?,?)");
+    $stmt->bind_param('iis', $creatorid, $postid, $contents);
+    // $stmt->execute();
+
+    // $sql ="INSERT INTO comments (Comment_Id, Creator_Id, Post_Id, Contents) 
+    //     VALUES (NULL".",".$creatorid.","."'".$postid."'".","."'".$contents."')";
+    if ($stmt->execute()) {
+        $stmt = $con->prepare("SELECT user.Nama , comments.* FROM comments INNER join user ON comments.Creator_Id = user.User_Id WHERE Post_Id = ? ORDER BY Time DESC");
+        $stmt->bind_param('i',$postid);
+        $stmt->execute();
+        $getcommentsresult = $stmt->get_result();
+
+        // $getcommentsresult = mysqli_query($con,"SELECT user.Nama , comments.* FROM comments INNER join user ON comments.Creator_Id = user.User_Id WHERE Post_Id = ".$postid." ORDER BY Time DESC");    
         while($comments = mysqli_fetch_array($getcommentsresult)) {                                
             echo
             "<li class=\"art-list-item\">
@@ -25,7 +36,7 @@ if (isset($_SESSION["isLogin"])){
             echo "</li>";
         }
     } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($con);
+        echo "Error: ". mysqli_error($con);
     }
 }else{
     header("Location: login.php"); /* Redirect browser */
