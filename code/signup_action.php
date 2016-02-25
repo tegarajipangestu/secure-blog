@@ -3,7 +3,7 @@ session_start();
 	include 'mainviewer.php';
 	$nama = $_POST['nama'];
 	$email = $_POST['email'];
-	$password = $_POST['password'];
+	$password = hash("sha256",$_POST['password']); 
 	$con = phpsqlconnection();
 	$result = mysqli_query($con,"SELECT * FROM user WHERE Email='$email' LIMIT 1");
 	if ($result->num_rows == 0) {

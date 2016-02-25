@@ -2,7 +2,7 @@
 session_start();
 	include 'mainviewer.php';
 	$email = $_POST['email'];
-	$password = $_POST['password'];
+	$password =  hash("sha256",$_POST['password']); 
 	
 	$con = phpsqlconnection();
 	$result = mysqli_query($con,"SELECT * FROM user WHERE Email='$email' AND Password='$password' LIMIT 1");
