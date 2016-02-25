@@ -6,7 +6,7 @@ if (isset($_SESSION["isLogin"])){
     $postid = $_GET['postid'];
 
     $getpostresult = getspecificpost($con,$postid);
-        $row = mysqli_fetch_array($getpostresult);
+    $row = mysqli_fetch_array($getpostresult);
     if ($row['Nama'] != $_SESSION['myNama']) {
         header("Location: index.php"); /* Redirect browser */
         exit();

@@ -61,12 +61,20 @@ if (isset($_SESSION["isLogin"]) && (isset($_POST['csrf_token']) && $_POST['csrf_
 		echo "Maaf Anda bukan pemilik post ini!";
 	} else {
 		if (isset($_FILES["image"])) {
-			mysqli_query($con,"UPDATE post SET Title='".$Judul."'".","."Date='".$Tanggal."'".","."Contents='".$Konten."'".", Image='".$target_file."' WHERE Post_Id=".$postid);			
-			echo "UPDATE post SET Title='".$Judul."'".","."Date='".$Tanggal."'".","."Contents='".$Konten."'".", Image='".$target_file."' WHERE Post_Id=".$postid;
+			$stmt = $con->prepare("UPDATE post SET Title=?,Date=?, Contents=?, Image=? WHERE Post_Id=?");
+			$stmt->bind_param('ssssi', $Judul, $Tanggal, $Konten, $target_file, $postid);
+			$stmt->execute();
+
+			// mysqli_query($con,"UPDATE post SET Title='".$Judul."'".","."Date='".$Tanggal."'".","."Contents='".$Konten."'".", Image='".$target_file."' WHERE Post_Id=".$postid);			
+			// echo "UPDATE post SET Title='".$Judul."'".","."Date='".$Tanggal."'".","."Contents='".$Konten."'".", Image='".$target_file."' WHERE Post_Id=".$postid;
 		}
 		else {
-			mysqli_query($con,"UPDATE post SET Title='".$Judul."'".","."Date='".$Tanggal."'".","."Contents='".$Konten."'"."WHERE Post_Id=".$postid);
-			echo "UPDATE post SET Title='".$Judul."'".","."Date='".$Tanggal."'".","."Contents='".$Konten."'"."WHERE Post_Id=".$postid;
+			$stmt = $con->prepare("UPDATE post SET Title=?,Date=?, Contents=? WHERE Post_Id=?");
+			$stmt->bind_param('sssi', $Judul, $Tanggal, $Konten, $postid);
+			$stmt->execute();
+
+			// mysqli_query($con,"UPDATE post SET Title='".$Judul."'".","."Date='".$Tanggal."'".","."Contents='".$Konten."'"."WHERE Post_Id=".$postid);
+			// echo "UPDATE post SET Title='".$Judul."'".","."Date='".$Tanggal."'".","."Contents='".$Konten."'"."WHERE Post_Id=".$postid;
 		}
 		header("Location: index.php");
 	}

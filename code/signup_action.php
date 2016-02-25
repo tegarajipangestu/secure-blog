@@ -5,7 +5,13 @@ session_start();
 	$email = $_POST['email'];
 	$password = $_POST['password'];
 	$con = phpsqlconnection();
-	$result = mysqli_query($con,"SELECT * FROM user WHERE Email='$email' LIMIT 1");
+    $stmt = $con->prepare(
+    "SELECT * FROM user WHERE Email='$email' LIMIT 1");
+    $stmt->bind_param('s', $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+	// $result = mysqli_query($con,"SELECT * FROM user WHERE Email='$email' LIMIT 1");
 	if ($result->num_rows == 0) {
 		// insert token too
 		$token = hash("sha256",(time()."".(rand(1000,1000000))));

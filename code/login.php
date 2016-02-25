@@ -4,7 +4,13 @@
     // remember the user
     include 'mainviewer.php';
     $con = phpsqlconnection();
-    $result = mysqli_query($con,"SELECT * FROM user WHERE Identifier='".$_COOKIE['userSimpleBlog']."' LIMIT 1");
+    $stmt = $con->prepare(
+    "SELECT * FROM user WHERE Identifier=? LIMIT 1");
+    $stmt->bind_param('s', $_COOKIE['userSimpleBlog']);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    // $result = mysqli_query($con,"SELECT * FROM user WHERE Identifier='".$_COOKIE['userSimpleBlog']."' LIMIT 1");
     
     $row = mysqli_fetch_array($result);
     if (mysqli_num_rows($result) == 1){ 

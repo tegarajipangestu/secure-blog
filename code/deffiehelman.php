@@ -45,8 +45,14 @@
         $sharedPublicServer =  computePublic($number1,$randomPrivate,$number2);
         //masukin ke database
 
-        $sql =  "UPDATE user SET base2=".$number2.", random=".$randomPrivate." WHERE User_Id=".$_SESSION["myId"];
-        mysqli_query($con,$sql);
+        $stmt = $con->prepare("UPDATE user SET base2=?, random=? WHERE User_Id=?");
+        $stmt->bind_param("iii", $number2, $randomPrivate, $_SESSION["myId"]);
+
+        $stmt->execute();
+        $stmt->close();
+
+        // $sql =  "UPDATE user SET base2=".$number2.", random=".$randomPrivate." WHERE User_Id=".$_SESSION["myId"];
+        // mysqli_query($con,$sql);
 
 //        echo "Sini";
         // echo "number1 = "+$number1; echo " ";
@@ -68,8 +74,14 @@
                 $random = $row['random'];
                 $sharedKey = sharedPrivate($sharedPublicClient,$random,$base2);                
                 // echo $shared_key; echo " ";
-                $sql =  "UPDATE user SET shared_key=".$sharedKey." WHERE User_Id=".$_SESSION["myId"];
-                mysqli_query($con,$sql);
+                $stmt = $con->prepare("UPDATE user SET shared_key=? WHERE User_Id=?");
+                $stmt->bind_param("ii", $sharedKey, $_SESSION["myId"]);
+
+                $stmt->execute();
+                $stmt->close();
+
+                // $sql =  "UPDATE user SET shared_key=".$sharedKey." WHERE User_Id=".$_SESSION["myId"];
+                // mysqli_query($con,$sql);
                 echo $sharedKey;
         }
         die();
