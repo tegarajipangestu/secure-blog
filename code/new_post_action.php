@@ -40,7 +40,11 @@ if (isset($_SESSION["isLogin"]) && (isset($_POST['csrf_token']) && $_POST['csrf_
 	} else {
 	    if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
 	        echo "The file ". basename( $_FILES["image"]["name"]). " has been uploaded.<br>";
+<<<<<<< HEAD
 	        $con = phpsqlconnection();
+=======
+			$con = phpsqlconnection();
+>>>>>>> df17127f283f68ad29758e0e77f1885ac2eb0ed3
 
 			$stmt = $con->prepare("INSERT INTO post (Post_Id, Creator_Id, Title, Date, Contents, Image) 
 				VALUES (NULL,?,?,?,?,?)");
@@ -58,12 +62,20 @@ if (isset($_SESSION["isLogin"]) && (isset($_POST['csrf_token']) && $_POST['csrf_
 			}
 
 			die();
+<<<<<<< HEAD
 	    } else {
 	        echo "Sorry, there was an error uploading your file.<br>";
 	    }
 	}
 
 	
+=======
+
+	    } else {
+	        echo "Sorry, there was an error uploading your file.<br>";
+	    }
+	}
+>>>>>>> df17127f283f68ad29758e0e77f1885ac2eb0ed3
 
 }else{
     header("Location: login.php"); /* Redirect browser */

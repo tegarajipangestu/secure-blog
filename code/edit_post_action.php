@@ -44,42 +44,39 @@ if (isset($_SESSION["isLogin"]) && (isset($_POST['csrf_token']) && $_POST['csrf_
 		} else {
 		    if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
 		        echo "The file ". basename( $_FILES["image"]["name"]). " has been uploaded.<br>";
-		    } else {
-		        echo "Sorry, there was an error uploading your file.<br>";
-		    }
-		}
-
-	}
-
-
     $con = phpsqlconnection();
 
     $getpostresult = getspecificpost($con,$postid);
         $row = mysqli_fetch_array($getpostresult);
 
-	if ($row['Nama'] != $_SESSION['myNama']) {
-		echo "Maaf Anda bukan pemilik post ini!";
-	} else {
-		if (isset($_FILES["image"])) {
-			$stmt = $con->prepare("UPDATE post SET Title=?,Date=?, Contents=?, Image=? WHERE Post_Id=?");
-			$stmt->bind_param('ssssi', $Judul, $Tanggal, $Konten, $target_file, $postid);
-			$stmt->execute();
+		if ($row['Nama'] != $_SESSION['myNama']) {
+			echo "Maaf Anda bukan pemilik post ini!";
+		} else {
+			if (isset($_FILES["image"])) {
+				$stmt = $con->prepare("UPDATE post SET Title=?,Date=?, Contents=?, Image=? WHERE Post_Id=?");
+				$stmt->bind_param('ssssi', $Judul, $Tanggal, $Konten, $target_file, $postid);
+				$stmt->execute();
 
-			// mysqli_query($con,"UPDATE post SET Title='".$Judul."'".","."Date='".$Tanggal."'".","."Contents='".$Konten."'".", Image='".$target_file."' WHERE Post_Id=".$postid);			
-			// echo "UPDATE post SET Title='".$Judul."'".","."Date='".$Tanggal."'".","."Contents='".$Konten."'".", Image='".$target_file."' WHERE Post_Id=".$postid;
+				// mysqli_query($con,"UPDATE post SET Title='".$Judul."'".","."Date='".$Tanggal."'".","."Contents='".$Konten."'".", Image='".$target_file."' WHERE Post_Id=".$postid);			
+				// echo "UPDATE post SET Title='".$Judul."'".","."Date='".$Tanggal."'".","."Contents='".$Konten."'".", Image='".$target_file."' WHERE Post_Id=".$postid;
+			}
+			else {
+				$stmt = $con->prepare("UPDATE post SET Title=?,Date=?, Contents=? WHERE Post_Id=?");
+				$stmt->bind_param('sssi', $Judul, $Tanggal, $Konten, $postid);
+				$stmt->execute();
+
+				// mysqli_query($con,"UPDATE post SET Title='".$Judul."'".","."Date='".$Tanggal."'".","."Contents='".$Konten."'"."WHERE Post_Id=".$postid);
+				// echo "UPDATE post SET Title='".$Judul."'".","."Date='".$Tanggal."'".","."Contents='".$Konten."'"."WHERE Post_Id=".$postid;
+			}
+			header("Location: index.php");
 		}
-		else {
-			$stmt = $con->prepare("UPDATE post SET Title=?,Date=?, Contents=? WHERE Post_Id=?");
-			$stmt->bind_param('sssi', $Judul, $Tanggal, $Konten, $postid);
-			$stmt->execute();
 
-			// mysqli_query($con,"UPDATE post SET Title='".$Judul."'".","."Date='".$Tanggal."'".","."Contents='".$Konten."'"."WHERE Post_Id=".$postid);
-			// echo "UPDATE post SET Title='".$Judul."'".","."Date='".$Tanggal."'".","."Contents='".$Konten."'"."WHERE Post_Id=".$postid;
-		}
-		header("Location: index.php");
-	}
+		die();    	
 
-	die();
+		    } else {
+		        echo "Sorry, there was an error uploading your file.<br>";
+		    }
+
 }else{
     header("Location: login.php"); /* Redirect browser */
 }
