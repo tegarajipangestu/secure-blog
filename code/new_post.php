@@ -1,5 +1,9 @@
 <?php 
   session_start();
+  if (! isset($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = base64_encode(openssl_random_pseudo_bytes(32));
+  }
+
   if (isset($_SESSION["isLogin"])){
  ?>
 
@@ -59,6 +63,7 @@
             <h2 style="margin-top: 24px;">Tambah Post</h2>
             <div id="contact-area">
                  <form name="PostForm" method="post" onSubmit="return validateDate()" action="new_post_action.php" enctype="multipart/form-data">
+                    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>" />
                     <label for="Judul">Judul:</label>
                     <input type="text" name="Judul" id="Judul" required>
 

@@ -3,6 +3,9 @@
 
   if (isset($_SESSION["isLogin"])){
 
+    if (! isset($_SESSION['csrf_token'])) {
+        $_SESSION['csrf_token'] = base64_encode(openssl_random_pseudo_bytes(32));
+    }
 
     include 'mainviewer.php';
     $con = phpsqlconnection();
@@ -74,6 +77,7 @@
                 echo 
                     "<form method=\"post\" action=\"edit_post_action.php?postid=".$postid."\" enctype=\"multipart/form-data\">";
                  ?>
+                    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>" />
                     <label for="Judul">Judul:</label>
                     <?php 
                         echo 

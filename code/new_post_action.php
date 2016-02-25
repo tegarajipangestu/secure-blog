@@ -1,7 +1,6 @@
 <?php 
-error_reporting(E_ALL);
 session_start();
-if (isset($_SESSION["isLogin"])){
+if (isset($_SESSION["isLogin"]) && (isset($_POST['csrf_token']) && $_POST['csrf_token'] === $_SESSION['csrf_token'])){
 	include 'mainviewer.php';
 	$Judul = $_POST['Judul'];
 	$Tanggal = $_POST['Tanggal'];
