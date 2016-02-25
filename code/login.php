@@ -1,6 +1,7 @@
 <?php 
   session_start();
   if(isset($_COOKIE['userSimpleBlog']) && $_COOKIE['userSimpleBlog'] != "false"){
+    // remember the user
     include 'mainviewer.php';
     $con = phpsqlconnection();
     $result = mysqli_query($con,"SELECT * FROM user WHERE Identifier='".$_COOKIE['userSimpleBlog']."' LIMIT 1");
@@ -11,6 +12,13 @@
         $_SESSION["myEmail"] = $row['Email'];
         $_SESSION["myNama"] = $row['Nama'];
         $_SESSION["myId"] = $row['User_Id'];
+
+        //update token
+        $token = hash("sha256",(time()."".(rand(1000,1000000))));
+        $con = phpsqlconnection();
+        $sql = "UPDATE user SET Token='$token' WHERE User_Id='".$row['User_Id']."'";
+        mysqli_query($con, $sql) || mysqli_error($con);
+        $_SESSION["myToken"] = $token;
 
         header("Location: index.php");
     }else{

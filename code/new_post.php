@@ -60,16 +60,16 @@
             <div id="contact-area">
                  <form name="PostForm" method="post" onSubmit="return validateDate()" action="new_post_action.php" enctype="multipart/form-data">
                     <label for="Judul">Judul:</label>
-                    <input type="text" name="Judul" id="Judul">
+                    <input type="text" name="Judul" id="Judul" required>
 
                     <label for="Tanggal">Tanggal:</label>
-                    <input type="date" name="Tanggal" id="Tanggal">
+                    <input type="date" name="Tanggal" id="Tanggal" required>
                     
                     <label for="Konten">Konten:</label><br>
-                    <textarea name="Konten" rows="20" cols="20" id="Konten"></textarea>
+                    <textarea name="Konten" rows="20" cols="20" id="Konten" required></textarea>
                     
                     <label for="FileUpload">Gambar:</label>
-                    <input type="file" name="image" id="fileToUpload"><br>
+                    <input type="file" name="image" id="fileToUpload" required><br>
             
                     <input type="submit" name="submit" value="Simpan" class="submit-button">
                 </form>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 172.17.0.3:3306
--- Generation Time: Feb 24, 2016 at 05:06 PM
+-- Generation Time: Feb 25, 2016 at 06:45 AM
 -- Server version: 5.6.29-log
 -- PHP Version: 5.6.9-1+deb.sury.org~trusty+2
 
@@ -39,10 +39,10 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`Comment_Id`, `Creator_Id`, `Post_Id`, `Contents`, `Time`) VALUES
-(14, 3, 32, 'cdscsdc', '2016-02-23 08:38:35'),
-(15, 3, 32, 'cdscsdccsdcsdccdsc', '2016-02-23 08:38:38'),
-(16, 18, 39, '-------------------------------------------------------------------------------&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;&#039;', '2016-02-24 10:43:12'),
-(17, 18, 39, '&lt;script&gt;&lt;script&gt;', '2016-02-24 10:43:43');
+(18, 20, 48, 'cdsmclscdmlscdm', '2016-02-25 06:32:32'),
+(19, 20, 48, 'Sangat imba komputernya', '2016-02-25 06:32:42'),
+(20, 21, 49, 'Beuhh', '2016-02-25 06:34:03'),
+(21, 20, 49, 'Mantap Gan!', '2016-02-25 06:34:20');
 
 -- --------------------------------------------------------
 
@@ -64,19 +64,8 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`Post_Id`, `Creator_Id`, `Title`, `Date`, `Contents`, `Image`) VALUES
-(32, 3, 'cdscsdcsdc', '2016-02-23 00:00:00', 'Bujangga Manik mangrupa salah sahiji naskah dina basa Sunda anu pohara gedé ajénna. Naskah ieu ditulis dina wangun puisi naratif dina daun nipah anu kiwari disimpen di Pabukon Bodleian di Oxford saprak taun 1627 (MS Jav. b. 3 (R), cf. Noorduyn 1968:469, Ricklefs/Voorhoeve 1977:181). Ieu naskah diwangun ku 29 lambar daun nipah, anu unggal lambarna ngandung kira-kira 56 jajar (rumpaka) anu tiap rumpakana diwangun ku 8 padalisan, bentuk puisi Sunda buhun.\r\n\r\nAnu ngalalakon dina ieu naskah téh nyaéta Prabu Jaya Pakuan nu boga landihan Bujangga Manik, saurang resi Hindu anu, sanajan mangrupa saurang prabu di karaton Pakuan Pajajaran (puseur dayeuh Karajaan Sunda, anu perenahna di wewengkon anu ayeuna jadi dayeuh Bogor), leuwih resep ngalakonan hirup jadi resi. Salaku resi, manéhna ngumbara mapay kabuyutan atawa puseur kaagamaan (Hindu) nu aya di Jawa jeung Bali. Anjeunna nyaritakeun yén pangumbaraanana téh dipaju dua kali. Samulangna ti Jawa, Bujangga Manik tatapa di hiji gunung di Tanah Sunda (bale geusan ngajadina) nepi ka pupusna. Mamam', NULL),
-(36, 3, 'Mamam', '2016-12-12 00:00:00', 'Mamam mamam', NULL),
-(37, 3, 'Mamam', '2016-12-12 00:00:00', 'mamam', NULL),
-(38, 3, 'Mamam', '2016-12-12 00:00:00', 'mamam; CREATE DATABASE Suppliers', NULL),
-(39, 18, 'Aing mamam', '2020-12-12 00:00:00', 'Aing juga mamam', NULL),
-(40, 18, 'Mamam', '2016-12-12 00:00:00', 'Mamam', NULL),
-(41, 18, 'aidjnaijfni', '3242-12-12 00:00:00', 'aksjdnaisjfniajdsfn', 'uploads/Screenshot from 2016-02-17 11:37:55.png'),
-(42, 18, 'aidjnaijfni', '3242-12-12 00:00:00', 'aksjdnaisjfniajdsfn', NULL),
-(43, 18, 'aidjnaijfni', '3242-12-12 00:00:00', 'aksjdnaisjfniajdsfn', NULL),
-(44, 18, 'aidjnaijfni', '3242-12-12 00:00:00', 'aksjdnaisjfniajdsfn', NULL),
-(45, 18, 'Mamam', '3123-12-12 00:00:00', 'Mamam', NULL),
-(46, 18, 'Mamam', '3123-12-12 00:00:00', 'Mamam', NULL),
-(47, 18, 'Pake image', '2088-12-12 00:00:00', 'Mamam', 'uploads/Screenshot from 2016-02-05 15:59:15.png');
+(48, 20, 'Komputer', '2016-02-26 00:00:00', 'Komputer adalah alat yang dipakai untuk mengolah data menurut prosedur yang telah dirumuskan. Kata computer pada awalnya dipergunakan untuk menggambarkan orang yang perkerjaannya melakukan perhitungan aritmatika, dengan atau tanpa alat bantu, tetapi arti kata ini kemudian dipindahkan kepada mesin itu sendiri. Asal mulanya, pengolahan informasi hampir eksklusif berhubungan dengan masalah aritmatika, tetapi komputer modern dipakai untuk banyak tugas yang tidak berhubungan dengan matematika.\r\nDalam arti seperti itu terdapat alat seperti slide rule, jenis kalkulator mekanik mulai dari abakus dan seterusnya, sampai semua komputer elektronik yang kontemporer. Istilah lebih baik yang cocok untuk arti luas seperti "komputer" adalah "yang mengolah informasi" atau "sistem pengolah informasi." Selama bertahun-tahun sudah ada beberapa arti yang berbeda dalam kata "komputer", dan beberapa kata yang berbeda tersebut sekarang disebut sebagai komputer.\r\nKata computer secara umum pernah dipergunakan untuk mendefiniskan orang yang melakukan perhitungan aritmatika, dengan atau tanpa mesin pembantu. Menurut Barnhart Concise Dictionary of Etymology, kata tersebut digunakan dalam bahasa Inggris pada tahun 1646 sebagai kata untuk "orang yang menghitung" kemudian menjelang 1897 juga digunakan sebagai "alat hitung mekanis". Selama Perang Dunia II kata tersebut menunjuk kepada para pekerja wanita Amerika Serikat dan Inggris yang pekerjaannya menghitung jalan artileri perang dengan mesin hitung.\r\nCharles Babbage mendesain salah satu mesin hitung pertama yang disebut mesin analitikal. Selain itu, berbagai alat mesin sederhana seperti slide rule juga sudah dapat dikatakan sebagai komputer.', 'uploads/ccc.png'),
+(49, 21, 'Unit aritmatika dan logika', '2016-02-27 00:00:00', 'ALU, singkatan dari Arithmetic And Logic Unit (bahasa Indonesia: unit aritmatika dan logika), adalah salah satu bagian dalam dari sebuah mikroprosesor yang berfungsi untuk melakukan operasi hitungan aritmatika dan logika. Contoh operasi aritmatika adalah operasi penjumlahan dan pengurangan, sedangkan contoh operasi logika adalah logika AND dan OR. tugas utama dari ALU (Arithmetic And Logic Unit)adalah melakukan semua perhitungan aritmatika atau matematika yang terjadi sesuai dengan instruksi program. ALU melakukan operasi arithmatika dengan dasar pertambahan, sedang operasi arithmatika yang lainnya, seperti pengurangan, perkalian, dan pembagian dilakukan dengan dasar penjumlahan. sehingga sirkuit elektronik di ALU yang digunakan untuk melaksanakan operasi arithmatika ini disebut adder. Tugas lalin dari ALU adalah melakukan keputusan dari operasi logika sesuai dengan instruksi program. Operasi logika (logical operation) meliputi perbandingan dua buah elemen logika dengan menggunakan operator logika, yaitu:\r\na. sama dengan (=)\r\nb. tidak sama dengan (<>)\r\nc. kurang dari (<)\r\nd. kurang atau sama dengan dari (<=)\r\ne. lebih besar dari (>)\r\n', 'uploads/330px-ALU_symbol.svg.png');
 
 -- --------------------------------------------------------
 
@@ -89,29 +78,20 @@ CREATE TABLE `user` (
   `Nama` varchar(25) NOT NULL,
   `Email` varchar(25) NOT NULL,
   `Password` varchar(25) NOT NULL,
-  `base2` int(11) NOT NULL,
-  `random` int(11) NOT NULL,
-  `shared_key` int(11) NOT NULL,
-  `Identifier` varchar(255) NOT NULL
+  `base2` int(11) DEFAULT '0',
+  `random` int(11) DEFAULT '0',
+  `shared_key` int(11) DEFAULT '0',
+  `Identifier` varchar(255) DEFAULT '0',
+  `Token` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`User_Id`, `Nama`, `Email`, `Password`, `base2`, `random`, `shared_key`, `Identifier`) VALUES
-(3, 'Daniar Heri Kurniawan', 'daniar.h.k@gmail.com', 'da', 0, 0, 0, '43824d5b0e51c1b0b7329b91c037ff3014c53b291471645fa9c1542f20594ff0'),
-(8, 'Tegar Aji Pangestu', 'tegar@gmail.com', 'te', 0, 0, 0, ''),
-(9, 'Fandi Azam Wiranata', 'fandi@gmail.com', 'fa', 0, 0, 0, ''),
-(10, 'Kurnia Mega', 'kurnia@gmail.com', 'ku', 0, 0, 0, ''),
-(11, 'Subagyo', 'su@gmail.com', 'su', 0, 0, 0, ''),
-(12, 'aa', 'aa@gmail.com', 'aa', 0, 0, 0, ''),
-(13, 'bb', 'bb@gmail.com', 'bb', 0, 0, 0, ''),
-(14, 'rr', 'rr@gmail.com', 'rr', 0, 0, 0, ''),
-(15, 'ww', 'ww@gmail.com', 'ww', 0, 0, 0, ''),
-(16, 'tt', 'tt@gmail.com', 'tt', 0, 0, 0, ''),
-(17, 'qq', 'qq@gmail.com', 'qq', 0, 0, 0, ''),
-(18, 'tegar', 'mamam@gmail.com', 'mamam', 0, 0, 0, '');
+INSERT INTO `user` (`User_Id`, `Nama`, `Email`, `Password`, `base2`, `random`, `shared_key`, `Identifier`, `Token`) VALUES
+(20, 'Daniar Kurniawan', 'daniar.h.k@gmail.com', 'da', 0, 0, 0, '34ca3e624e28ec0922e357effdfc5d6729bd03c49f9fd471612da6235b2e7ec7', 'd1d9f7894bfc3f71b08e40ea3b09bff5f7d19259e1305d62e6912e4708f83289'),
+(21, 'Fandi Azam Wiranata', 'fandi@gmail.com', 'fa', 0, 0, 0, '0', 'b168127390adb3f03215edc972a61687c637fedc0c200413086ac931971bf541');
 
 --
 -- Indexes for dumped tables
@@ -148,17 +128,17 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `Comment_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `Comment_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `Post_Id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `Post_Id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `User_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `User_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- Constraints for dumped tables
 --

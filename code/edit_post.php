@@ -82,7 +82,7 @@
                     <label for="Tanggal">Tanggal:</label>
                     <?php 
                         echo 
-                            "<input type=\"text\" name=\"Tanggal\" id=\"Tanggal\" value= \"".$row['Date']."\">";
+                            "<input type=\"date\" name=\"Tanggal\" id=\"Tanggal\" value= \"".$row['Date']."\">";
                      ?>                    
                     <label for="Konten">Konten:</label><br>
                     <?php 
