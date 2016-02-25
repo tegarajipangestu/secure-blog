@@ -102,7 +102,7 @@
                  ?> 
 
                     <label for="Komentar">Komentar:</label><br>
-                    <textarea name="Komentar" rows="20" cols="20" id="Komentar"></textarea>
+                    <textarea name="Komentar" rows="20" cols="20" id="Komentar" required></textarea>
 
                     <input type="submit" name="submit" value="Kirim" class="submit-button">
                 </form>

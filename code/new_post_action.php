@@ -40,32 +40,46 @@ if (isset($_SESSION["isLogin"]) && (isset($_POST['csrf_token']) && $_POST['csrf_
 	} else {
 	    if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
 	        echo "The file ". basename( $_FILES["image"]["name"]). " has been uploaded.<br>";
+	        $con = phpsqlconnection();
+
+			$stmt = $con->prepare("INSERT INTO post (Post_Id, Creator_Id, Title, Date, Contents, Image) 
+				VALUES (NULL,?,?,?,?,?)");
+			$stmt->bind_param('issss', $creatorid, $Judul, $Tanggal, $Konten, $target_file);
+			$stmt->execute();
+			// $result = $stmt->get_result();
+
+			// $sql = "INSERT INTO post (Post_Id, Creator_Id, Title, Date, Contents, Image) 
+			// 	VALUES (NULL".",".$creatorid.","."'".$Judul."'".","."'".$Tanggal."'".","."'".$Konten."'".","."'".$target_file."')";
+			if ($stmt->execute()) {
+				// echo "Huba";
+			   	header("Location: index.php");
+			} else {
+			    echo "Error: " . $sql . "<br>" . mysqli_error($con);
+			}
+
+			die();
 	    } else {
 	        echo "Sorry, there was an error uploading your file.<br>";
 	    }
 	}
 
-	$con = phpsqlconnection();
-
-	$stmt = $con->prepare("INSERT INTO post (Post_Id, Creator_Id, Title, Date, Contents, Image) 
-		VALUES (NULL,?,?,?,?,?)");
-	$stmt->bind_param('issss', $creatorid, $Judul, $Tanggal, $Konten, $target_file);
-	$stmt->execute();
-	// $result = $stmt->get_result();
-
-	// $sql = "INSERT INTO post (Post_Id, Creator_Id, Title, Date, Contents, Image) 
-	// 	VALUES (NULL".",".$creatorid.","."'".$Judul."'".","."'".$Tanggal."'".","."'".$Konten."'".","."'".$target_file."')";
-	if ($stmt->execute()) {
-		// echo "Huba";
-	   	header("Location: index.php");
-	} else {
-	    echo "Error: " . $sql . "<br>" . mysqli_error($con);
-	}
-
-	die();
+	
 
 }else{
     header("Location: login.php"); /* Redirect browser */
 }
+
+
+function decryptCaesar($encrypted_text, $key){
+	$alphabet=array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
+	//positions of the letters in alphabet
+	$flip=array_flip($alphabet);
+	
+	$decrypted_text='';
+	for ($i=0; $i<$n; $i++)
+		//decryption
+		$decrypted_text.=$alphabet[(26+$flip[$encrypted_text[$i]]-$key)%26];
+	return $decrypted_text;
+} 
 
  ?>

@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    define ("MAX_INT",2000);
+    define ("MAX_INT",50);
 //    include 'mainviewer.php';
 
 

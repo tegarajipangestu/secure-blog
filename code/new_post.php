@@ -62,7 +62,7 @@
         <div class="art-body-inner">
             <h2 style="margin-top: 24px;">Tambah Post</h2>
             <div id="contact-area">
-                 <form name="PostForm" method="post" onSubmit="return validateDate()" action="new_post_action.php" enctype="multipart/form-data">
+                 <form name="PostForm" method="post" onSubmit="return createNewPost()" action="new_post_action.php"  enctype="multipart/form-data">
                     <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>" />
                     <label for="Judul">Judul:</label>
                     <input type="text" name="Judul" id="Judul" required>
@@ -105,7 +105,44 @@
 
 </div>
 
+<script type="text/javascript" src="assets/js/app.js"></script>
+<script type="text/javascript" src="assets/js/respond.min.js"></script>
+<script type="text/javascript" src="assets/js/newpost.js"></script>
+<script type="text/javascript" src="assets/js/deffiehelman.js"></script>
+<script type="text/javascript" src="assets/js/bignumber.js"></script>
 <script>
+  var ga_ua = '{{! TODO: ADD GOOGLE ANALYTICS UA HERE }}';
+
+  (function(g,h,o,s,t,z){g.GoogleAnalyticsObject=s;g[s]||(g[s]=
+      function(){(g[s].q=g[s].q||[]).push(arguments)});g[s].s=+new Date;
+      t=h.createElement(o);z=h.getElementsByTagName(o)[0];
+      t.src='//www.google-analytics.com/analytics.js';
+      z.parentNode.insertBefore(t,z)}(window,document,'script','ga'));
+      ga('create',ga_ua);ga('send','pageview');
+</script>
+</body>
+</html>
+<?php 
+    }else{
+        header("Location: login.php"); /* Redirect browser */
+        exit();
+    }
+ ?>
+
+<script>
+
+    function createNewPost(){
+        if (validateDate()){
+            var shared_key = deffiehelman();
+            // document.getElementById('Judul').textContent = 
+            document.getElementById('Judul').value = (caesarShift(document.getElementById('Judul').value, shared_key%25));
+            document.getElementById('Konten').value = (caesarShift(document.getElementById('Konten').value, shared_key%25));
+
+        }else{
+            return false;
+        }
+    }
+
     function validateDate()
     {
         var inputdate = document.forms["PostForm"]["Tanggal"].value;
@@ -152,25 +189,3 @@
         }
     }  
 </script>
-<script type="text/javascript" src="assets/js/fittext.js"></script>
-<script type="text/javascript" src="assets/js/app.js"></script>
-<script type="text/javascript" src="assets/js/respond.min.js"></script>
-<script type="text/javascript" src="assets/js/newpost.js"></script>
-<script>
-  var ga_ua = '{{! TODO: ADD GOOGLE ANALYTICS UA HERE }}';
-
-  (function(g,h,o,s,t,z){g.GoogleAnalyticsObject=s;g[s]||(g[s]=
-      function(){(g[s].q=g[s].q||[]).push(arguments)});g[s].s=+new Date;
-      t=h.createElement(o);z=h.getElementsByTagName(o)[0];
-      t.src='//www.google-analytics.com/analytics.js';
-      z.parentNode.insertBefore(t,z)}(window,document,'script','ga'));
-      ga('create',ga_ua);ga('send','pageview');
-</script>
-</body>
-</html>
-<?php 
-    }else{
-        header("Location: login.php"); /* Redirect browser */
-        exit();
-    }
- ?>
