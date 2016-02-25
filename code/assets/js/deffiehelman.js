@@ -16,8 +16,11 @@ function computePublic(number1, power, number2) {
 }
 
 function sharedPrivate(number1, power, number2) {
-
-	return Math.pow(number1,power) % number2;	
+	var number1 = new BigNumber(""+number1);
+	var power = new BigNumber(""+power);
+	var number2 = new BigNumber(""+number2);
+	PI = new BigNumber(number1.pow(power)).mod(number2);
+	return PI;
 }
 
 
@@ -29,7 +32,7 @@ function deffiehelman() {
 	// alert("number 1, number 2 = "+number1+" "+number2);
 	xhttp.open("GET", "deffiehelman.php?action=1&number1="+number1+"&number2="+number2, false);
 	xhttp.send();
-	
+
 
 	sharedPublicServer = xhttp.responseText;
 
