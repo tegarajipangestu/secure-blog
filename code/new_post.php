@@ -135,9 +135,9 @@
         if (validateDate()){
             var shared_key = deffiehelman();
             // document.getElementById('Judul').textContent = 
-            document.getElementById('Judul').value = (caesarShift(document.getElementById('Judul').value, shared_key%25));
-            document.getElementById('Konten').value = (caesarShift(document.getElementById('Konten').value, shared_key%25));
-
+            // document.getElementById('Judul').value = (caesarShift(document.getElementById('Judul').value, shared_key%25));
+            // document.getElementById('Konten').value = (caesarShift(document.getElementById('Konten').value, shared_key%25));
+            return true;
         }else{
             return false;
         }

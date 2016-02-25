@@ -1,4 +1,4 @@
-const MAX_RAND = 50;
+const MAX_RAND = 500;
 const MIN_RAND = 0;
 
 
@@ -75,3 +75,4 @@ function caesarShift(text, shift) {
 	}
 	return result;
 }
+

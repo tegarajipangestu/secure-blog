@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    define ("MAX_INT",50);
+    define ("MAX_INT",500);
 //    include 'mainviewer.php';
 
 
@@ -76,7 +76,7 @@
                 // echo $shared_key; echo " ";
                 $stmt = $con->prepare("UPDATE user SET shared_key=? WHERE User_Id=?");
                 $stmt->bind_param("ii", $sharedKey, $_SESSION["myId"]);
-
+                $_SESSION["shared_key"] = $sharedKey;
                 $stmt->execute();
                 $stmt->close();
 
