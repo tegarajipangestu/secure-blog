@@ -104,6 +104,7 @@
 <script type="text/javascript" src="assets/js/app.js"></script>
 <script type="text/javascript" src="assets/js/respond.min.js"></script>
 <script type="text/javascript" src="assets/js/deffiehelman.js"></script>
+<script type="text/javascript" src="assets/js/bignumber.js"></script>
 
 <script>
   

@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    define ("MAX_INT",20);
+    define ("MAX_INT",2000);
 //    include 'mainviewer.php';
 
 
@@ -24,12 +24,12 @@
 
     function computePublic($number1, $power, $number2) {
 
-        return pow($number1, $power) % $number2;
+        return bcpowmod((string)$number1, (string)$power, (string)$number2);
     }
 
     function sharedPrivate($number1, $power, $number2) {
 
-        return pow($number1, $power) % $number2;
+        return bcpowmod((string)$number1, (string)$power, (string)$number2);
     }
 
     $action = $_GET['action'];
