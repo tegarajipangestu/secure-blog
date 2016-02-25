@@ -12,7 +12,12 @@ if (isset($_SESSION["isLogin"])){
         exit();
     }else{
     	
-		mysqli_query($con,"DELETE FROM post WHERE Post_Id=".$postid);
+        $stmt = $con->prepare(
+        "DELETE FROM post WHERE Post_Id=?");
+        $stmt->bind_param('i', $postid);
+        $stmt->execute();
+
+		// mysqli_query($con,"DELETE FROM post WHERE Post_Id=".$postid);
 		header("Location: index.php");
     }
 
