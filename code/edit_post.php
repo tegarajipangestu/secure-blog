@@ -75,7 +75,7 @@
             <div id="contact-area">
                 <?php 
                 echo 
-                    "<form method=\"post\" action=\"edit_post_action.php?postid=".$postid."\" enctype=\"multipart/form-data\">";
+                    "<form  method=\"post\" onSubmit=\"return ediPost()\" action=\"edit_post_action.php?postid=".$postid."\" enctype=\"multipart/form-data\">";
                  ?>
                     <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>" />
                     <label for="Judul">Judul:</label>
@@ -154,6 +154,64 @@
         return false;
     }
 }
+
+  function ediPost(){
+
+        if (validateDate()){
+            var shared_key = deffiehelman();
+            document.getElementById('Judul').value = (caesarShift(document.getElementById('Judul').value, shared_key%25));
+            document.getElementById('Konten').value = (caesarShift(document.getElementById('Konten').value, shared_key%25));
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    function validateDate()
+    {
+        var inputdate = document.forms["PostForm"]["Tanggal"].value;
+        var currentdate = new Date();
+        var nowdd = currentdate.getDate();
+        var nowmm = currentdate.getMonth()+1;
+        var nowyyyy = currentdate.getFullYear();
+        var partdate = inputdate.split('-');
+        var inputyyyy = partdate[0];
+        var inputmm = partdate[1];
+        var inputdd = partdate[2];
+        if (nowyyyy<inputyyyy)
+        {
+            return true;
+        }        
+        else if (nowyyyy>inputyyyy)
+        {
+            alert("Tanggal tidak valid");
+            return false;
+        }
+        else
+        {
+            if (nowmm<inputmm)
+            {
+                return true;
+            }
+            else if (nowmm>inputmm)
+            {
+                alert("Tanggal tidak valid");
+                return false;
+            }
+            else
+            {
+                if (nowdd<=inputdd)
+                {
+                    return true;
+                }
+                else  if (nowdd>inputdd)
+                {
+                    alert("Tanggal tidak valid");
+                    return false;
+                }
+            }
+        }
+    }  
 </script>
 </body>
 </html>
