@@ -71,4 +71,28 @@
 			 </script>";
     	}
 	}
+
+
+	
+class caesarEnc {
+	function caesarDecode( $plaintext, $key ){
+		$key = $key%25;
+	    $ciphertext = "";
+	    $ascii_a = ord( 'a' );
+	    $ascii_z = ord( 'z' );
+	    $ascii_A = ord( 'A' );
+	    $ascii_Z = ord( 'Z' );
+	    while( strlen( $plaintext ) ){
+	        $char = ord( $plaintext );
+	        if( $char >= $ascii_a && $char <= $ascii_z ){
+	            $char = ( (  $char - $key - $ascii_a + 26) % 26 + $ascii_a) ;
+	        }else if( $char >= $ascii_A && $char <= $ascii_Z ){
+	            $char = ( (  $char - $key  - $ascii_A +26 ) % 26 + $ascii_A) ;
+	        }
+	        $plaintext = substr( $plaintext, 1 );
+	        $ciphertext .= chr( $char );
+	    }
+	    return $ciphertext;
+	}
+}
  ?>

@@ -1,12 +1,39 @@
 
 <?php
 session_start();
+
+    $utf8 = array(
+        '/[áàâãªä]/u'   =>   'a',
+        '/[ÁÀÂÃÄ]/u'    =>   'A',
+        '/[ÍÌÎÏ]/u'     =>   'I',
+        '/[íìîï]/u'     =>   'i',
+        '/[éèêë]/u'     =>   'e',
+        '/[ÉÈÊË]/u'     =>   'E',
+        '/[óòôõºö]/u'   =>   'o',
+        '/[ÓÒÔÕÖ]/u'    =>   'O',
+        '/[úùûü]/u'     =>   'u',
+        '/[ÚÙÛÜ]/u'     =>   'U',
+        '/ç/'           =>   'c',
+        '/Ç/'           =>   'C',
+        '/ñ/'           =>   'n',
+        '/Ñ/'           =>   'N',
+        '/–/'           =>   '-', // UTF-8 hyphen to "normal" hyphen
+        '/−/'           =>   '-', // UTF-8 hyphen to "normal" hyphen
+        '/[’‘‹›‚]/u'    =>   ' ', // Literally a single quote
+        '/[“”«»„]/u'    =>   ' ', // Double quote
+    );
+
 if (isset($_SESSION["isLogin"]) && (isset($_POST['csrf_token']) && $_POST['csrf_token'] === $_SESSION['csrf_token'])) {
     include 'mainviewer.php';
-    $Judul   = $_POST['Judul'];
-    $Tanggal = $_POST['Tanggal'];
-    $Konten  = $_POST['Konten'];
-    $postid  = $_GET['postid'];
+	
+	$decrypt = new caesarEnc();
+	$funcname = "caesarDecode";
+	
+	$Judul = $decrypt->$funcname(preg_replace(array_keys($utf8), array_values($utf8),$_POST['Judul']),(int)$_SESSION["shared_key"]);
+	
+	$Tanggal = $_POST['Tanggal'];
+    $Konten = $decrypt->$funcname(preg_replace(array_keys($utf8), array_values($utf8), $_POST['Konten']),(int)$_SESSION["shared_key"]);// caesarDecode ( $_POST['Konten'], (int)$_SESSION["shared_key"]) ;
+	$postid  = $_GET['postid'];
     $con = phpsqlconnection();
     
     
@@ -55,17 +82,8 @@ if (isset($_SESSION["isLogin"]) && (isset($_POST['csrf_token']) && $_POST['csrf_
                         $stmt = $con->prepare("UPDATE post SET Title=?,Date=?, Contents=?, Image=? WHERE Post_Id=?");
                         $stmt->bind_param('ssssi', $Judul, $Tanggal, $Konten, $target_file, $postid);
                         $stmt->execute();
-                        
-                        // mysqli_query($con,"UPDATE post SET Title='".$Judul."'".","."Date='".$Tanggal."'".","."Contents='".$Konten."'".", Image='".$target_file."' WHERE Post_Id=".$postid);            
-                        // echo "UPDATE post SET Title='".$Judul."'".","."Date='".$Tanggal."'".","."Contents='".$Konten."'".", Image='".$target_file."' WHERE Post_Id=".$postid;
                     } else {
                     	echo "Impossible";
-                        // $stmt = $con->prepare("UPDATE post SET Title=?,Date=?, Contents=? WHERE Post_Id=?");
-                        // $stmt->bind_param('sssi', $Judul, $Tanggal, $Konten, $postid);
-                        // $stmt->execute();
-                        
-                        // mysqli_query($con,"UPDATE post SET Title='".$Judul."'".","."Date='".$Tanggal."'".","."Contents='".$Konten."'"."WHERE Post_Id=".$postid);
-                        // echo "UPDATE post SET Title='".$Judul."'".","."Date='".$Tanggal."'".","."Contents='".$Konten."'"."WHERE Post_Id=".$postid;
                     }
                     header("Location: index.php");
                 }
