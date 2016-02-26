@@ -40,48 +40,60 @@
         // echo "action = ".$action; echo " ";
         $number1 = $_GET['number1'];
         $number2 = $_GET['number2'];
+        $login = $_GET['login'];
         $randomPrivate = generateNumber();
 
         $sharedPublicServer =  computePublic($number1,$randomPrivate,$number2);
         //masukin ke database
 
-        $stmt = $con->prepare("UPDATE user SET base2=?, random=? WHERE User_Id=?");
-        $stmt->bind_param("iii", $number2, $randomPrivate, $_SESSION["myId"]);
-
+        if($login == 0){
+            // not for login
+            $stmt = $con->prepare("UPDATE user SET base2=?, random=? WHERE User_Id=?");
+            $stmt->bind_param("iii", $number2, $randomPrivate, $_SESSION["myId"]);
+        }else{
+        $email = $_GET['email'];
+            // for login
+            $stmt = $con->prepare("UPDATE user SET temp_base2=?, temp_random=? WHERE Email=?");
+            $stmt->bind_param("iis", $number2, $randomPrivate, $email);
+        }
         $stmt->execute();
         $stmt->close();
 
-        // $sql =  "UPDATE user SET base2=".$number2.", random=".$randomPrivate." WHERE User_Id=".$_SESSION["myId"];
-        // mysqli_query($con,$sql);
-
-//        echo "Sini";
-        // echo "number1 = "+$number1; echo " ";
-        // echo "number2 = "+$number2; echo " ";
-        // echo "randomPrivate = "+$randomPrivate; echo " ";
-        // echo "sharedPublicServer = "+$sharedPublicServer; echo " ";
         echo $sharedPublicServer;
         die();
     }
     else if ($action==2) {
+        $login = $_GET['login'];
         $sharedPublicClient = $_GET['sharedPublicClient'];
-        $sql="SELECT * FROM user WHERE User_Id=".$_SESSION["myId"]." LIMIT 1";
-
-        $result = mysqli_query($con,$sql);   
-
+        
+        if($login == 0){
+            $sql="SELECT * FROM user WHERE User_Id=".$_SESSION["myId"]." LIMIT 1";
+        }else{
+            $email = $_GET['email'];
+            $sql="SELECT * FROM user WHERE Email='".$email."' LIMIT 1";
+        }
+        $result = mysqli_query($con,$sql); 
         $row = mysqli_fetch_array($result);
-        if (mysqli_num_rows($result) == 1){ 
-                $base2 =  $row['base2'];
-                $random = $row['random'];
-                $sharedKey = sharedPrivate($sharedPublicClient,$random,$base2);                
+        if (mysqli_num_rows($result) == 1){                
                 // echo $shared_key; echo " ";
-                $stmt = $con->prepare("UPDATE user SET shared_key=? WHERE User_Id=?");
-                $stmt->bind_param("ii", $sharedKey, $_SESSION["myId"]);
+                 if($login == 0){
+                    $base2 =  $row['base2'];
+                    $random = $row['random'];
+                    $sharedKey = sharedPrivate($sharedPublicClient,$random,$base2); 
+                    $stmt = $con->prepare("UPDATE user SET shared_key=? WHERE User_Id=?");
+                    $stmt->bind_param("ii", $sharedKey, $_SESSION["myId"]);
+                }else{
+                    $base2 =  $row['temp_base2'];
+                    $random = $row['temp_random'];
+                    $sharedKey = sharedPrivate($sharedPublicClient,$random,$base2); 
+                    // for login
+                    $stmt = $con->prepare("UPDATE user SET temp_shared_key=? WHERE Email=?");
+                    $stmt->bind_param("is", $sharedKey, $email);
+                }
                 $_SESSION["shared_key"] = $sharedKey;
                 $stmt->execute();
                 $stmt->close();
 
-                // $sql =  "UPDATE user SET shared_key=".$sharedKey." WHERE User_Id=".$_SESSION["myId"];
-                // mysqli_query($con,$sql);
                 echo $sharedKey;
         }
         die();

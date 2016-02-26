@@ -2,7 +2,13 @@
 session_start();
 	include 'mainviewer.php';
 	$email = $_POST['email'];
-	$password =  hash("sha256",$_POST['password']); 
+
+	$decrypt = new caesarEncLogin();
+	$funcname = "caesarDecode";
+	
+	$passwordxx = $decrypt->$funcname($_POST['password'],(int)$_SESSION["shared_key"]);
+	// echo $passwordxx;
+	$password =  hash("sha256",$passwordxx); 
 	
 	$con = phpsqlconnection();
 	$result = mysqli_query($con,"SELECT * FROM user WHERE Email='$email' AND Password='$password' LIMIT 1");
@@ -38,8 +44,29 @@ session_start();
 		header("Location: index.php");
 	} else {
 		$_SESSION["msg"] = "Password or email is not correct!";
-		header("Location: signup.php");
+		header("Location: signup.php ");
 	}
 	die();
 
+class caesarEncLogin {
+	function caesarDecode( $plaintext, $key ){
+		$key = $key%25;
+	    $ciphertext = "";
+	    $ascii_a = ord( 'a' );
+	    $ascii_z = ord( 'z' );
+	    $ascii_A = ord( 'A' );
+	    $ascii_Z = ord( 'Z' );
+	    while( strlen( $plaintext ) ){
+	        $char = ord( $plaintext );
+	        if( $char >= $ascii_a && $char <= $ascii_z ){
+	            $char = ( (  $char - $key - $ascii_a + 26) % 26 + $ascii_a) ;
+	        }else if( $char >= $ascii_A && $char <= $ascii_Z ){
+	            $char = ( (  $char - $key  - $ascii_A +26 ) % 26 + $ascii_A) ;
+	        }
+	        $plaintext = substr( $plaintext, 1 );
+	        $ciphertext .= chr( $char );
+	    }
+	    return $ciphertext;
+	}
+}
  ?>

@@ -30,7 +30,7 @@ function deffiehelman() {
 	number1 = generateNumber();
 	number2 = generateNumber();
 	// alert("number 1, number 2 = "+number1+" "+number2);
-	xhttp.open("GET", "deffiehelman.php?action=1&number1="+number1+"&number2="+number2, false);
+	xhttp.open("GET", "deffiehelman.php?action=1&number1="+number1+"&number2="+number2+"&login="+0, false);
 	xhttp.send();
 
 
@@ -44,7 +44,7 @@ function deffiehelman() {
 
 	//alert("sharedPublicClient = "+sharedPublicClient);
 	var xhttp = new XMLHttpRequest();
-	xhttp.open("GET", "deffiehelman.php?action=2&sharedPublicClient="+sharedPublicClient, false);
+	xhttp.open("GET", "deffiehelman.php?action=2&sharedPublicClient="+sharedPublicClient+"&login="+0, false);
 	xhttp.send();
 
 	sharedKey = sharedPrivate(sharedPublicServer,randomPrivate,number2);
@@ -54,6 +54,34 @@ function deffiehelman() {
 }
 
 
+function deffiehelmanForLogin(email) {
+	var xhttp = new XMLHttpRequest();
+
+	number1 = generateNumber();
+	number2 = generateNumber();
+	// alert("number 1, number 2 = "+number1+" "+number2);
+	xhttp.open("GET", "deffiehelman.php?action=1&number1="+number1+"&number2="+number2+"&login="+1+"&email="+email, false);
+	xhttp.send();
+
+
+	sharedPublicServer = xhttp.responseText;
+
+	//alert("client sharedPublicServer = "+sharedPublicServer);	
+
+	randomPrivate = generateNumber();
+
+	var sharedPublicClient = new BigNumber(computePublic(number1,randomPrivate,number2));
+
+	//alert("sharedPublicClient = "+sharedPublicClient);
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("GET", "deffiehelman.php?action=2&sharedPublicClient="+sharedPublicClient+"&login="+1+"&email="+email, false);
+	xhttp.send();
+
+	sharedKey = sharedPrivate(sharedPublicServer,randomPrivate,number2);
+	// alert("sharedKey = "+sharedKey);	
+	// alert(xhttp.responseText);
+	return sharedKey;
+}
 
 
 /*

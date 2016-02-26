@@ -91,7 +91,7 @@
         <div class="art-body-inner">
             <h2>Login</h2>
             <div id="contact-area">
-                 <form name="LoginForm" method="post" onSubmit="return validateEmail()" action="login_action.php">
+                 <form name="LoginForm" method="post" onSubmit="return encrypt()" action="login_action.php">
                     <label for="email">Email:</label>
                     <input type="text" name="email" id="email">
 
@@ -150,6 +150,8 @@
 <script type="text/javascript" src="assets/js/app.js"></script>
 <script type="text/javascript" src="assets/js/respond.min.js"></script>
 <script type="text/javascript" src="assets/js/newpost.js"></script>
+<script type="text/javascript" src="assets/js/deffiehelman.js"></script>
+<script type="text/javascript" src="assets/js/bignumber.js"></script>
 <script>
   var ga_ua = '{{! TODO: ADD GOOGLE ANALYTICS UA HERE }}';
 
@@ -162,3 +164,18 @@
 </script>
 </body>
 </html>
+
+
+<script type="text/javascript">
+    function encrypt(){
+        if (validateEmail()){
+            var temp_shared_key = deffiehelmanForLogin(document.getElementById('email').value);
+            // alert(temp_shared_key)
+            document.getElementById('password').value = (caesarShift(document.getElementById('password').value, temp_shared_key%25));
+            return true;
+        }else{
+            return false; 
+        }
+    }
+
+</script>
