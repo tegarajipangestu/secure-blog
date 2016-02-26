@@ -3,10 +3,16 @@ session_start();
 if (isset($_SESSION["isLogin"]) && (isset($_POST['csrf_token']) && $_POST['csrf_token'] === $_SESSION['csrf_token'])){
 	include 'mainviewer.php';
 	// var_dump();
-	$Judul = $_POST['Judul'];
+
+
+	$decrypt = new caesarEnc();
+	$funcname = "caesarDecode";
+	
+	$Judul = $decrypt->$funcname($_POST['Judul'],(int)$_SESSION["shared_key"]);
 	$Tanggal = $_POST['Tanggal'];
 	$creatorid = $_SESSION["myId"];
-	$Konten = $_POST['Konten'];// caesarDecode ( $_POST['Konten'], (int)$_SESSION["shared_key"]) ;
+	
+	$Konten = $decrypt->$funcname($_POST['Konten'],(int)$_SESSION["shared_key"]);// caesarDecode ( $_POST['Konten'], (int)$_SESSION["shared_key"]) ;
 
 	$target_dir = "uploads/";
 	$target_file = $target_dir.basename($_FILES["image"]["name"]);
@@ -68,28 +74,31 @@ if (isset($_SESSION["isLogin"]) && (isset($_POST['csrf_token']) && $_POST['csrf_
 	}
 
 }else{
+
     header("Location: login.php"); /* Redirect browser */
 }
 
-
-function caesarDecode( $message, $key ){
-	$key = $key%25;
-    $ciphertext = "";
-    $ascii_a = ord( 'a' );
-    $ascii_z = ord( 'z' );
-    $ascii_A = ord( 'A' );
-    $ascii_Z = ord( 'Z' );
-    while( strlen( $plaintext ) ){
-        $char = ord( $plaintext );
-        if( $char >= $ascii_a && $char <= $ascii_z ){
-            $char = ( ( $key + $char + $ascii_a ) % 26 ) ;
-        }else if( $char >= $ascii_A && $char <= $ascii_Z ){
-            $char = ( ( $key + $char + $ascii_A ) % 26 ) ;
-        }
-        $plaintext = substr( $plaintext, 1 );
-        $ciphertext .= chr( $char );
-    }
-    return "$ciphertext";
+class caesarEnc {
+	function caesarDecode( $plaintext, $key ){
+		$key = $key%25;
+	    $ciphertext = "";
+	    $ascii_a = ord( 'a' );
+	    $ascii_z = ord( 'z' );
+	    $ascii_A = ord( 'A' );
+	    $ascii_Z = ord( 'Z' );
+	    while( strlen( $plaintext ) ){
+	        $char = ord( $plaintext );
+	        if( $char >= $ascii_a && $char <= $ascii_z ){
+	            $char = ( (  $char - $key - $ascii_a + 26) % 26 + $ascii_a) ;
+	        }else if( $char >= $ascii_A && $char <= $ascii_Z ){
+	            $char = ( (  $char - $key  - $ascii_A +26 ) % 26 + $ascii_A) ;
+	        }
+	        $plaintext = substr( $plaintext, 1 );
+	        $ciphertext .= chr( $char );
+	    }
+	    return $ciphertext;
+	}
 }
+
 
  ?>
