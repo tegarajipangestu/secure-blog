@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 172.17.0.3:3306
--- Generation Time: Feb 26, 2016 at 02:40 PM
+-- Generation Time: Feb 26, 2016 at 05:00 PM
 -- Server version: 5.6.29-log
 -- PHP Version: 5.6.9-1+deb.sury.org~trusty+2
 
@@ -61,8 +61,11 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`Post_Id`, `Creator_Id`, `Title`, `Date`, `Contents`, `Image`) VALUES
-(51, 22, 'Datalog: Deductive Database Programming', '2016-02-27 00:00:00', 'Datalog is\r\na declarative logic language in which each formula is a function-free Horn clause, and every variable in the head of a clause must appear in the body of the clause.\r\n\r\na lightweight deductive database system where queries and database updates are expressed in the logic language.\r\n\r\nThe use of Datalog syntax and an implementation based on tabling intermediate results ensures that all queries terminate.\r\n\r\n    1 Datalog Module Language\r\n    2 Tutorial\r\n    3 Parenthetical Datalog Module Language\r\n    4 Racket Interoperability\r\n    5 Acknowledgments', 'uploads/b.jpg'),
-(52, 22, 'Komputer', '2016-02-27 00:00:00', 'Komputer adalah alat yang dipakai untuk mengolah data menurut prosedur yang telah dirumuskan. Kata computer pada awalnya dipergunakan untuk menggambarkan orang yang perkerjaannya melakukan perhitungan aritmatika, dengan atau tanpa alat bantu, tetapi arti kata ini kemudian dipindahkan kepada mesin itu sendiri. Asal mulanya, pengolahan informasi hampir eksklusif berhubungan dengan masalah aritmatika, tetapi komputer modern dipakai untuk banyak tugas yang tidak berhubungan dengan matematika.\r\nDalam arti seperti itu terdapat alat seperti slide rule, jenis kalkulator mekanik mulai dari abakus dan seterusnya, sampai semua komputer elektronik yang kontemporer. Istilah lebih baik yang cocok untuk arti luas seperti "komputer" adalah "yang mengolah informasi" atau "sistem pengolah informasi." Selama bertahun-tahun sudah ada beberapa arti yang berbeda dalam kata "komputer", dan beberapa kata yang berbeda tersebut sekarang disebut sebagai komputer.\r\nKata computer secara umum pernah dipergunakan untuk mendefiniskan orang yang melakukan perhitungan aritmatika, dengan atau tanpa mesin pembantu. Menurut Barnhart Concise Dictionary of Etymology, kata tersebut digunakan dalam bahasa Inggris pada tahun 1646 sebagai kata untuk "orang yang menghitung" kemudian menjelang 1897 juga digunakan sebagai "alat hitung mekanis". Selama Perang Dunia II kata tersebut menunjuk kepada para pekerja wanita Amerika Serikat dan Inggris yang pekerjaannya menghitung jalan artileri perang dengan mesin hitung.\r\nCharles Babbage mendesain salah satu mesin hitung pertama yang disebut mesin analitikal. Selain itu, berbagai alat mesin sederhana seperti slide rule juga sudah dapat dikatakan sebagai komputer.', 'uploads/b.jpg');
+(51, 22, 'Datalog: Deductive Database Programming edit', '2016-02-27 00:00:00', 'Datalog is\r\na declarative logic language in which each formula is a function-free Horn clause, and every variable in the head of a clause must appear in the body of the clause.\r\n\r\na lightweight deductive database system where queries and database updates are expressed in the logic language.\r\n\r\nThe use of Datalog syntax and an implementation based on tabling intermediate results ensures that all queries terminate.\r\n\r\n    1 Datalog Module Language\r\n    2 Tutorial\r\n    3 Parenthetical Datalog Module Language\r\n    4 Racket Interoperability\r\n    5 Acknowledgments', 'uploads/b.jpg'),
+(52, 22, 'Komputer', '2016-02-27 00:00:00', 'Komputer adalah alat yang dipakai untuk mengolah data menurut prosedur yang telah dirumuskan. Kata computer pada awalnya dipergunakan untuk menggambarkan orang yang perkerjaannya melakukan perhitungan aritmatika, dengan atau tanpa alat bantu, tetapi arti kata ini kemudian dipindahkan kepada mesin itu sendiri. Asal mulanya, pengolahan informasi hampir eksklusif berhubungan dengan masalah aritmatika, tetapi komputer modern dipakai untuk banyak tugas yang tidak berhubungan dengan matematika.\r\nDalam arti seperti itu terdapat alat seperti slide rule, jenis kalkulator mekanik mulai dari abakus dan seterusnya, sampai semua komputer elektronik yang kontemporer. Istilah lebih baik yang cocok untuk arti luas seperti "komputer" adalah "yang mengolah informasi" atau "sistem pengolah informasi." Selama bertahun-tahun sudah ada beberapa arti yang berbeda dalam kata "komputer", dan beberapa kata yang berbeda tersebut sekarang disebut sebagai komputer.\r\nKata computer secara umum pernah dipergunakan untuk mendefiniskan orang yang melakukan perhitungan aritmatika, dengan atau tanpa mesin pembantu. Menurut Barnhart Concise Dictionary of Etymology, kata tersebut digunakan dalam bahasa Inggris pada tahun 1646 sebagai kata untuk "orang yang menghitung" kemudian menjelang 1897 juga digunakan sebagai "alat hitung mekanis". Selama Perang Dunia II kata tersebut menunjuk kepada para pekerja wanita Amerika Serikat dan Inggris yang pekerjaannya menghitung jalan artileri perang dengan mesin hitung.\r\nCharles Babbage mendesain salah satu mesin hitung pertama yang disebut mesin analitikal. Selain itu, berbagai alat mesin sederhana seperti slide rule juga sudah dapat dikatakan sebagai komputer.', 'uploads/b.jpg'),
+(53, 22, 'Komputerrrr', '2016-02-27 00:00:00', 'Komputer adalah alat yang dipakai untuk mengolah data menurut prosedur yang telah dirumuskan. Kata computer pada awalnya dipergunakan untuk menggambarkan orang yang perkerjaannya melakukan perhitungan aritmatika, dengan atau tanpa alat bantu, tetapi arti kata ini kemudian dipindahkan kepada mesin itu sendiri. Asal mulanya, pengolahan informasi hampir eksklusif berhubungan dengan masalah aritmatika, tetapi komputer modern dipakai untuk banyak tugas yang tidak berhubungan dengan matematika.\r\nDalam arti seperti itu terdapat alat seperti slide rule, jenis kalkulator mekanik mulai dari abakus dan seterusnya, sampai semua komputer elektronik yang kontemporer. Istilah lebih baik yang cocok untuk arti luas seperti "komputer" adalah "yang mengolah informasi" atau "sistem pengolah informasi." Selama bertahun-tahun sudah ada beberapa arti yang berbeda dalam kata "komputer", dan beberapa kata yang berbeda tersebut sekarang disebut sebagai komputer.\r\nKata computer secara umum pernah dipergunakan untuk mendefiniskan orang yang melakukan perhitungan aritmatika, dengan atau tanpa mesin pembantu. Menurut Barnhart Concise Dictionary of Etymology, kata tersebut digunakan dalam bahasa Inggris pada tahun 1646 sebagai kata untuk "orang yang menghitung" kemudian menjelang 1897 juga digunakan sebagai "alat hitung mekanis". Selama Perang Dunia II kata tersebut menunjuk kepada para pekerja wanita Amerika Serikat dan Inggris yang pekerjaannya menghitung jalan artileri perang dengan mesin hitung.\r\nCharles Babbage mendesain salah satu mesin hitung pertama yang disebut mesin analitikal. Selain itu, berbagai alat mesin sederhana seperti slide rule juga sudah dapat dikatakan sebagai komputer.', 'uploads/b.jpg'),
+(54, 22, 'MMMMMMMM', '2016-02-27 00:00:00', '212\r\n\r\n32\r\n3232\r\n\r\n233', 'uploads/b.jpg'),
+(55, 22, 'NNNNNNNN', '2016-02-27 00:00:00', '212\r\n\r\n32\r\n3232\r\n\r\n233', 'uploads/b.jpg');
 
 -- --------------------------------------------------------
 
@@ -79,15 +82,18 @@ CREATE TABLE `user` (
   `random` int(11) DEFAULT '0',
   `shared_key` int(11) DEFAULT '0',
   `Identifier` varchar(256) DEFAULT '0',
-  `Token` varchar(256) NOT NULL
+  `Token` varchar(256) NOT NULL,
+  `temp_shared_key` int(11) NOT NULL,
+  `temp_random` int(11) NOT NULL,
+  `temp_base2` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`User_Id`, `Nama`, `Email`, `Password`, `base2`, `random`, `shared_key`, `Identifier`, `Token`) VALUES
-(22, 'Daniar Kurniawan', 'daniar.h.k@gmail.com', 'aa58b21b01d6b8a99c1a5856962dbac36c758a79dc0a77c2e013ce2c39ecdc8a', 54, 24, 27, '0', 'cb29ffc5098b1a59dd9411f9db8f6b50bea330f7f7314ef4aa9646e77adf5de5');
+INSERT INTO `user` (`User_Id`, `Nama`, `Email`, `Password`, `base2`, `random`, `shared_key`, `Identifier`, `Token`, `temp_shared_key`, `temp_random`, `temp_base2`) VALUES
+(22, 'Daniar Kurniawan', 'daniar.h.k@gmail.com', 'aa58b21b01d6b8a99c1a5856962dbac36c758a79dc0a77c2e013ce2c39ecdc8a', 177, 54, 4, '0', '0ea715921c289b33972e53f3a6291c7652e5f41ce0d082d295ccef86002255d7', 315, 425, 403);
 
 --
 -- Indexes for dumped tables
