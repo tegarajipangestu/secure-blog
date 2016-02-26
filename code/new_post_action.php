@@ -1,5 +1,28 @@
 <?php 
-session_start();
+include "sanitize.php";
+
+    $utf8 = array(
+        '/[áàâãªä]/u'   =>   'a',
+        '/[ÁÀÂÃÄ]/u'    =>   'A',
+        '/[ÍÌÎÏ]/u'     =>   'I',
+        '/[íìîï]/u'     =>   'i',
+        '/[éèêë]/u'     =>   'e',
+        '/[ÉÈÊË]/u'     =>   'E',
+        '/[óòôõºö]/u'   =>   'o',
+        '/[ÓÒÔÕÖ]/u'    =>   'O',
+        '/[úùûü]/u'     =>   'u',
+        '/[ÚÙÛÜ]/u'     =>   'U',
+        '/ç/'           =>   'c',
+        '/Ç/'           =>   'C',
+        '/ñ/'           =>   'n',
+        '/Ñ/'           =>   'N',
+        '/–/'           =>   '-', // UTF-8 hyphen to "normal" hyphen
+        '/−/'           =>   '-', // UTF-8 hyphen to "normal" hyphen
+        '/[’‘‹›‚]/u'    =>   ' ', // Literally a single quote
+        '/[“”«»„]/u'    =>   ' ', // Double quote
+    );
+    // return ;
+
 if (isset($_SESSION["isLogin"]) && (isset($_POST['csrf_token']) && $_POST['csrf_token'] === $_SESSION['csrf_token'])){
 	include 'mainviewer.php';
 	// var_dump();
@@ -8,11 +31,11 @@ if (isset($_SESSION["isLogin"]) && (isset($_POST['csrf_token']) && $_POST['csrf_
 	$decrypt = new caesarEnc();
 	$funcname = "caesarDecode";
 	
-	$Judul = $decrypt->$funcname($_POST['Judul'],(int)$_SESSION["shared_key"]);
+	$Judul = $decrypt->$funcname(preg_replace(array_keys($utf8), array_values($utf8),$_POST['Judul']),(int)$_SESSION["shared_key"]);
 	$Tanggal = $_POST['Tanggal'];
 	$creatorid = $_SESSION["myId"];
-	
-	$Konten = $decrypt->$funcname($_POST['Konten'],(int)$_SESSION["shared_key"]);// caesarDecode ( $_POST['Konten'], (int)$_SESSION["shared_key"]) ;
+
+	$Konten = $decrypt->$funcname(preg_replace(array_keys($utf8), array_values($utf8), $_POST['Konten']),(int)$_SESSION["shared_key"]);// caesarDecode ( $_POST['Konten'], (int)$_SESSION["shared_key"]) ;
 
 	$target_dir = "uploads/";
 	$target_file = $target_dir.basename($_FILES["image"]["name"]);
@@ -74,8 +97,12 @@ if (isset($_SESSION["isLogin"]) && (isset($_POST['csrf_token']) && $_POST['csrf_
 	}
 
 }else{
-
-    header("Location: login.php"); /* Redirect browser */
+	// $decrypt = new caesarEnc();
+	// $funcname = "caesarDecode";
+	
+	// $Judul = $decrypt->$funcname("–",19);
+	// echo $Judul;
+    header("Location: login.php"); 
 }
 
 class caesarEnc {

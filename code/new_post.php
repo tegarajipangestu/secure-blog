@@ -135,7 +135,6 @@
 
         if (validateDate()){
             var shared_key = deffiehelman();
-            alert(shared_key);
             document.getElementById('Judul').value = (caesarShift(document.getElementById('Judul').value, shared_key%25));
             document.getElementById('Konten').value = (caesarShift(document.getElementById('Konten').value, shared_key%25));
             return true;
