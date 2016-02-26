@@ -75,7 +75,7 @@
             <div id="contact-area">
                 <?php 
                 echo 
-                    "<form  method=\"post\" onSubmit=\"return ediPost()\" action=\"edit_post_action.php?postid=".$postid."\" enctype=\"multipart/form-data\">";
+                    "<form  id=\"PostForm\" method=\"post\" onSubmit=\"return editPost()\" action=\"edit_post_action.php?postid=".$postid."\" enctype=\"multipart/form-data\">";
                  ?>
                     <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>" />
                     <label for="Judul">Judul:</label>
@@ -134,6 +134,8 @@
 <script type="text/javascript" src="assets/js/app.js"></script>
 <script type="text/javascript" src="assets/js/respond.min.js"></script>
 <script type="text/javascript" src="assets/js/newpost.js"></script>
+<script type="text/javascript" src="assets/js/deffiehelman.js"></script>
+<script type="text/javascript" src="assets/js/bignumber.js"></script>
 <script type="text/javascript">
   var ga_ua = '{{! TODO: ADD GOOGLE ANALYTICS UA HERE }}';
 
@@ -155,7 +157,7 @@
     }
 }
 
-  function ediPost(){
+  function editPost(){
 
         if (validateDate()){
             var shared_key = deffiehelman();

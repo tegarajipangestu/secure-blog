@@ -77,7 +77,6 @@
     </div>
 </div>
 
-<button onclick="deffiehelman()">Mamam</button>
 
 <footer class="footer">
     <div class="back-to-top"><a href="">Back to top</a></div>

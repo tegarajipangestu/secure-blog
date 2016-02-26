@@ -3,7 +3,7 @@ if (isset($_SESSION["isLogin"])){
 	function getpost($con)
 	{	
 		$stmt = $con->prepare(
-		  "SELECT user.Nama , post.* FROM post INNER join user ON post.Creator_Id = user.User_Id ORDER BY Date DESC");
+		  "SELECT user.Nama ,user.User_Id, post.* FROM post INNER join user ON post.Creator_Id = user.User_Id ORDER BY Date DESC");
 		// $stmt->bind_param('ss', $value, $value2);
 		$stmt->execute();
 		$result = $stmt->get_result();
@@ -15,7 +15,7 @@ if (isset($_SESSION["isLogin"])){
 	function getspecificpost($con,$postid)
 	{
 		$stmt = $con->prepare(
-		  "SELECT user.Nama , post.* FROM post INNER join user ON post.Creator_Id = user.User_Id WHERE Post_Id = ?");
+		  "SELECT user.Nama ,user.User_Id, post.* FROM post INNER join user ON post.Creator_Id = user.User_Id WHERE Post_Id = ?");
 		$stmt->bind_param('i', $postid);
 		$stmt->execute();
 		$result = $stmt->get_result();
@@ -26,7 +26,7 @@ if (isset($_SESSION["isLogin"])){
 	function getspecificcomments($con,$postid)
 	{
 		$stmt = $con->prepare(
-		  "SELECT user.Nama , comments.* FROM comments INNER join user ON comments.Creator_Id = user.User_Id WHERE Post_Id = ? ORDER BY Time DESC");
+		  "SELECT user.Nama ,user.User_Id, comments.* FROM comments INNER join user ON comments.Creator_Id = user.User_Id WHERE Post_Id = ? ORDER BY Time DESC");
 		$stmt->bind_param('i', $postid);
 		$stmt->execute();
 		$result = $stmt->get_result();
